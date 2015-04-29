@@ -20,8 +20,8 @@ module.exports = function(grunt) {
 
     pkg: grunt.file.readJSON('package.json'),
 
-    // Rename
-    // ======
+    // Copy
+    // ====
 
     copy: {
       fancybox: {
@@ -68,20 +68,9 @@ module.exports = function(grunt) {
         },
         options: {
           sourceMap: true,
-          // sourceMapFilename:
-          // Pokud nastaveno, zapise se SM do
-          // externiho souboru. Uvadi se zde cesta k nemu.
           sourceMapFilename: 'dist/css/style.css.map',
-          // sourceMapURL:
-          // Prepise vychozi url pro soubor se SM,
-          // tak jak se vola na konci zkompilovaneho CSS souboru.
-          // Vychozi je obsah `sourceMapFilename`, tady jde prepsat.
           sourceMapURL: 'style.css.map',
-          // sourceMapRootpath:
-          // Cesta k LESS souborum jek budou volany ze souboru se SM.
-          sourceMapRootpath: '/',
-          // Komprimovat timto? contrib-css odstranoval sourcemapy
-          //compress: true,
+          sourceMapRootpath: '/'
         }
       }
     },
@@ -150,63 +139,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // 3) Obrazky
-    // ==========
-
-    // Imagemin: zmensovani datoveho objemu obrazku
-    // --------------------------------------------
-
-    imagemin: {
-      // Root
-      root: {
-        files: [{
-          expand: true,
-          cwd: 'src/img/',
-          src: ['**/*.jpg','**/*.png','**/*.gif'],
-          dest: 'dist/img/'
-        }]
-      },
-      // Bitmapy v designu
-      bitmap: {
-        files: [{
-          expand: true,
-          cwd: 'src/img/bitmap/',
-          src: ['**/*.jpg','**/*.png','**/*.gif'],
-          dest: 'dist/img/bitmap/'
-        }]
-      },
-      // Obrazky v obsahu
-      content_img: {
-        files: [{
-          expand: true,
-          cwd: 'src/img/content/',
-          src: ['**/*.jpg','**/*.png','**/*.gif'],
-          dest: 'dist/img/content/'
-        }]
-      },
-      // Vektory
-      vector: {
-        files: [{
-          expand: true,
-          cwd: 'src/img/vector/',
-          src: ['**/*.svg'],
-          dest: 'dist/img/vector/'
-        }]
-      },
-    },
-
-    // SVG2PNG
-    // -------
-    // Z SVG obrazku dela PNG kopie pro fallbacky.
-
-    svg2png: {
-      images: {
-        files: [
-            { cwd: 'dist/img/vector/', src: ['**/*.svg'] }
-        ]
-      }
-    },
-
     // 4) browserSync a watch
     // ======================
 
@@ -254,9 +186,8 @@ module.exports = function(grunt) {
   // 5) Alias tasky
   // ==============
 
-  grunt.registerTask('css', ['less:default', 'autoprefixer']);
-  grunt.registerTask('img', ['imagemin', 'svg2png']);
+  grunt.registerTask('css', ['less:default', 'autoprefixer', 'cssmin']);
   grunt.registerTask('js', ['browserify', 'uglify']);
-  grunt.registerTask('default', ['copy:fancybox', 'css', 'js', 'browserSync', 'watch']);
+  grunt.registerTask('default', ['copy', 'css', 'js', 'browserSync', 'watch']);
 
 };
