@@ -104,16 +104,7 @@ module.exports = function(grunt) {
         files: {
           'dist/css/style.min.css': 'dist/css/style.css'
         }
-      },
-      inline_css: {
-          files: [{
-            expand: true,
-            cwd: 'dist/css/critical/',
-            src: ['*.css', '!*.min.css'],
-            dest: 'dist/css/critical/',
-            ext: '.min.css'
-          }]
-        }
+      }
     },
 
     // Javascript
