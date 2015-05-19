@@ -1,4 +1,4 @@
-# Výchozí stav příkladu ke školení (Pokročilý responzivní design)[http://www.vzhurudolu.cz/kurzy/pokrocily-responzivni-design]
+# Výchozí stav příkladu ke školení [Pokročilý responzivní design](http://www.vzhurudolu.cz/kurzy/pokrocily-responzivni-design)
 
 **Autor:** Martin Michálek, martin@vzhurudolu.cz
 
