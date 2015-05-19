@@ -1,7 +1,4 @@
-# Příklad ke školením responzivního designu
-
-Responzivní design: http://www.vzhurudolu.cz/kurzy/responzivni-design
-Pokročilý responzivní design: http://www.vzhurudolu.cz/kurzy/pokrocily-responzivni-design
+# Výchozí stav příkladu ke školení (Pokročilý responzivní design)[http://www.vzhurudolu.cz/kurzy/pokrocily-responzivni-design]
 
 **Autor:** Martin Michálek, martin@vzhurudolu.cz
 
@@ -25,9 +22,10 @@ Závislosti řešíme pomocí Browserify.
 
 ## Závislosti a npm
 
-Závislosti (jQuery, Fancybox nebo Normalize.CSS) spravujeme pomocí https://www.npmjs.com/.
+Vše potřebné nainstalujete pomocí `npm install`.
 
-Viz `package.json`.
+Závislosti (jQuery, Fancybox nebo Normalize.CSS) spravujeme pomocí Node.js balíčkovacího systému https://www.npmjs.com/. Viz `package.json`.
+
 
 ## Grunt a automatizace
 
