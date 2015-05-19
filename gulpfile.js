@@ -4,7 +4,9 @@ var gulp = require('gulp'),
   rename = require('gulp-rename'),
   sourcemaps = require('gulp-sourcemaps'),
   autoprefixer = require('gulp-autoprefixer'),
-  cssmin = require('gulp-cssmin');
+  cssmin = require('gulp-cssmin'),
+  browserSync = require('browser-sync').create(),
+  reload = browserSync.reload;
 
 // CSS
 // ---
@@ -21,7 +23,8 @@ gulp.task('less', function () {
             cascade: false
     }))
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('./dist/css/'));
+    .pipe(gulp.dest('./dist/css/'))
+    .pipe(reload({stream: true}));
 });
 
 // CSS minifikace
@@ -35,8 +38,22 @@ gulp.task('cssmin', function () {
     .pipe(gulp.dest('./dist/css/'));
 });
 
+// BrowserSync
 
-
-gulp.task('default', function() {
-
+gulp.task('browser-sync', function() {
+    browserSync.init({
+        server: {
+            baseDir: "./"
+        }
+    });
 });
+
+// Watch
+
+gulp.task('watch', function() {
+  gulp.watch('./src/less/**/*.less', ['less']);
+});
+
+
+gulp.task('css', ['less', 'cssmin']);
+gulp.task('default', ['css', 'browser-sync', 'watch']);

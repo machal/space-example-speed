@@ -8,6 +8,7 @@
     }
   ],
   "devDependencies": {
+    "browser-sync": "^2.7.1",
     "debowerify": "^1.2.1",
     "grunt": "~0.4.5",
     "grunt-autoprefixer": "^1.0.1",
