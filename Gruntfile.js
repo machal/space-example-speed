@@ -127,7 +127,8 @@ module.exports = function(grunt) {
       mainJS: {
           src: [
             'node_modules/jquery/dist/jquery.js',
-            'node_modules/fancybox/dist/js/jquery.fancybox.js'
+            'node_modules/fancybox/dist/js/jquery.fancybox.js',
+            'src/js/index.js'
           ],
           dest: 'dist/js/script.js'
       },
