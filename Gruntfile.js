@@ -130,6 +130,38 @@ module.exports = function(grunt) {
       }
     },
 
+    // responsive_images
+    // -----------------
+    // Vyroba zmensenin obrazku po potreby <img srcset>.
+
+    responsive_images: {
+      options: {
+        sizes: [
+        {
+          name: "small",
+          width: 400,
+          height: 225
+        },
+        {
+          name: "medium",
+          width: 1024,
+          height: 576
+        },
+        {
+          name: "large",
+          width: 1600,
+          height: 900
+        }
+        ]
+      },
+      files: {
+        expand: true,
+        src: ['**.jpg'],
+        cwd: 'src/img/content/',
+        dest: 'dist/img/content/'
+      },
+    },
+
     // 4) browserSync a watch
     // ======================
 
