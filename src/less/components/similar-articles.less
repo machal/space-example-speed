@@ -5,9 +5,9 @@
 */
 
 .similar-articles {
-	list-style-type: none;
-	margin: 0 0 24px;
-	padding: 0;
+  list-style-type: none;
+  margin: 0 0 24px;
+  padding: 0;
 }
 
 // Polozka podobnych clanku
@@ -16,20 +16,24 @@
 .similar-article {
   font-size: @font-size-base * .75;
   line-height: 1.4;
-	margin: 0 0 12px 0;
-	padding: 0;
+  margin: 0 0 12px 0;
+  padding: 0;
 
   p {
     margin-bottom: @font-size-base * .75;
   }
 }
 
+// Varianta s obrazkem
+// -------------------
+
+.similar-article-with-image { }
 
 // Layout
 
 @media only screen and (min-width: 400px) {
 
-  .similar-article {
+  .similar-article-with-image {
     position: relative;
     padding-left: percentage(1/4);
 
@@ -38,7 +42,7 @@
     }
   }
 
-  .similar-article-image {
+  .similar-article-with-image .similar-article-image {
     position: absolute;
     top: 0;
     left: 0;
@@ -50,11 +54,11 @@
 
 @media only screen and (min-width: 550px) {
 
-  .similar-article {
+  .similar-article-with-image {
     padding-left: percentage(1/6);
   }
 
-  .similar-article-image {
+  .similar-article-with-image .similar-article-image {
     width: percentage(1/6.5);
     width: calc(percentage(1/6) ~"- @{gutter}");
   }

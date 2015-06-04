@@ -33,6 +33,7 @@
     "time-grunt": "^1.1.0"
   },
   "dependencies": {
+    "ajaxInclude": "filamentgroup/Ajax-Include-Pattern",
     "fancybox": "^3.0.0",
     "jquery": "^1.11.2",
     "respond.js": "^1.4.2"
