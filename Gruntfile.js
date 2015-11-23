@@ -20,8 +20,8 @@ module.exports = function(grunt) {
 
     pkg: grunt.file.readJSON('package.json'),
 
-    // Copy
-    // ====
+    // Rename
+    // ======
 
     copy: {
       fancybox: {
@@ -47,7 +47,22 @@ module.exports = function(grunt) {
         files: {
           'dist/js/lib/respond.min.js': 'node_modules/respond.js/dest/respond.min.js'
         }
-      }
+      },
+      picturefill: {
+        files: {
+          'dist/js/lib/picturefill.min.js': 'node_modules/picturefill/dist/picturefill.min.js'
+        }
+      },
+      fontfaceobserver: {
+        files: {
+          'dist/js/lib/fontfaceobserver.min.js': 'node_modules/fontfaceobserver/fontfaceobserver.standalone.js'
+        }
+      },
+      ajaxInclude: {
+        files: {
+          'dist/js/lib/ajaxinclude.min.js': 'node_modules/ajaxInclude/dist/ajaxInclude.min.js'
+        }
+      },
     },
 
     // CSS
@@ -68,9 +83,20 @@ module.exports = function(grunt) {
         },
         options: {
           sourceMap: true,
+          // sourceMapFilename:
+          // Pokud nastaveno, zapise se SM do
+          // externiho souboru. Uvadi se zde cesta k nemu.
           sourceMapFilename: 'dist/css/style.css.map',
+          // sourceMapURL:
+          // Prepise vychozi url pro soubor se SM,
+          // tak jak se vola na konci zkompilovaneho CSS souboru.
+          // Vychozi je obsah `sourceMapFilename`, tady jde prepsat.
           sourceMapURL: 'style.css.map',
-          sourceMapRootpath: '/'
+          // sourceMapRootpath:
+          // Cesta k LESS souborum jek budou volany ze souboru se SM.
+          sourceMapRootpath: '/',
+          // Komprimovat timto? contrib-css odstranoval sourcemapy
+          //compress: true,
         }
       }
     },
@@ -104,7 +130,31 @@ module.exports = function(grunt) {
         files: {
           'dist/css/style.min.css': 'dist/css/style.css'
         }
+      },
+      critical: {
+        files: {
+          'dist/css/critical-style.min.css': 'dist/css/critical-style.css'
+        }
       }
+    },
+
+    // CriticalCSS
+    // -----------
+
+    // Vytahuje část CSS nad zlomem pro potřeby inlinování.
+
+    criticalcss: {
+        custom: {
+            options: {
+                url: "http://localhost:3000/skoleni/2015_04_28_rwd_pok/",
+                width: 1200,
+                height: 900,
+                outputfile: "dist/css/critical-style.css",
+                filename: "dist/css/style.css",
+                buffer: 800*1024,
+                ignoreConsole: false
+            }
+        }
     },
 
     // Javascript
@@ -128,7 +178,7 @@ module.exports = function(grunt) {
           src: [
             'node_modules/jquery/dist/jquery.js',
             'node_modules/fancybox/dist/js/jquery.fancybox.js',
-            'src/js/index.js'
+            'node_modules/ajaxInclude/dist/ajaxInclude.js'
           ],
           dest: 'dist/js/script.js'
       },
@@ -138,9 +188,70 @@ module.exports = function(grunt) {
     // ---------------------
 
     uglify: {
-      script: {
+      mainJS: {
           src: 'dist/js/script.js',
           dest: 'dist/js/script.min.js'
+      },
+      enhance: {
+          src: 'src/js/lib/enhance.js',
+          dest: 'dist/js/lib/enhance.min.js'
+      }
+    },
+
+    // 3) Obrazky
+    // ==========
+
+    // Imagemin: zmensovani datoveho objemu obrazku
+    // --------------------------------------------
+
+    imagemin: {
+      // Root
+      root: {
+        files: [{
+          expand: true,
+          cwd: 'src/img/',
+          src: ['**/*.jpg','**/*.png','**/*.gif'],
+          dest: 'dist/img/'
+        }]
+      },
+      // Bitmapy v designu
+      bitmap: {
+        files: [{
+          expand: true,
+          cwd: 'src/img/bitmap/',
+          src: ['**/*.jpg','**/*.png','**/*.gif'],
+          dest: 'dist/img/bitmap/'
+        }]
+      },
+      // Obrazky v obsahu
+      content_img: {
+        files: [{
+          expand: true,
+          cwd: 'src/img/content/',
+          src: ['**/*.jpg','**/*.png','**/*.gif'],
+          dest: 'dist/img/content/'
+        }]
+      },
+      // Vektory
+      vector: {
+        files: [{
+          expand: true,
+          cwd: 'src/img/vector/',
+          src: ['**/*.svg'],
+          dest: 'dist/img/vector/'
+        }]
+      },
+    },
+
+    // SVG2PNG
+    // -------
+    // Z SVG obrazku dela PNG kopie pro fallbacky.
+
+    svg2png: {
+      images: {
+        files: [
+            { cwd: 'dist/img/vector/', src: ['**/*.svg'] }
+        ]
       }
     },
 
@@ -175,6 +286,7 @@ module.exports = function(grunt) {
         dest: 'dist/img/content/'
       },
     },
+
 
     // 4) browserSync a watch
     // ======================
@@ -224,7 +336,9 @@ module.exports = function(grunt) {
   // ==============
 
   grunt.registerTask('css', ['less:default', 'autoprefixer', 'cssmin']);
+  grunt.registerTask('critical', ['criticalcss', 'cssmin:critical']);
+  grunt.registerTask('img', ['imagemin', 'svg2png']);
   grunt.registerTask('js', ['concat', 'uglify']);
-  grunt.registerTask('default', ['copy', 'css', 'js', 'browserSync', 'watch']);
+  grunt.registerTask('default', ['copy:fancybox', 'css', 'js', 'browserSync', 'watch']);
 
 };
