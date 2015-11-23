@@ -146,12 +146,11 @@ module.exports = function(grunt) {
     criticalcss: {
         custom: {
             options: {
-                url: "http://localhost:3000/skoleni/2015_04_28_rwd_pok/",
+                url: "http://localhost:3000/skoleni/2015_04_28_rwd_pok/", // TODO sem dat cestu k projektu na localhostu
                 width: 1200,
                 height: 900,
-                outputfile: "dist/css/critical-style.css",
+                outputfile: "dist/css/critical.css",
                 filename: "dist/css/style.css",
-                buffer: 800*1024,
                 ignoreConsole: false
             }
         }
@@ -308,7 +307,7 @@ module.exports = function(grunt) {
           },
           options: {
               watchTask: true,
-              proxy: 'sites.localhost'
+              proxy: 'sites.localhost' // TODO sem dat cestu k projektu na localhostu
           }
       }
     },
