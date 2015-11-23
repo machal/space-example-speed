@@ -133,7 +133,7 @@ module.exports = function(grunt) {
       },
       critical: {
         files: {
-          'dist/css/critical-style.min.css': 'dist/css/critical-style.css'
+          'dist/css/critical.min.css': 'dist/css/critical.css'
         }
       }
     },
@@ -146,7 +146,7 @@ module.exports = function(grunt) {
     criticalcss: {
         custom: {
             options: {
-                url: "http://localhost:3000/skoleni/2015_04_28_rwd_pok/", // TODO sem dat cestu k projektu na localhostu
+                url: "http://localhost:3004/skoleni/2015_24_11_Tipsport_rwd_rychlost/", // TODO sem dat cestu k projektu na localhostu
                 width: 1200,
                 height: 900,
                 outputfile: "dist/css/critical.css",
