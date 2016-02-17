@@ -1,6 +1,19 @@
-# Výchozí stav příkladu ke školení [Pokročilý responzivní design](http://www.vzhurudolu.cz/kurzy/pokrocily-responzivni-design)
+# Příklad ke školení [Optimalizace rychlosti načítání](http://www.vzhurudolu.cz/kurzy/rychlost-nacitani)
 
-**Autor:** Martin Michálek, martin@vzhurudolu.cz
+## Instalace projektu
+
+Nejprve si musíte [nainstalovat NPM a celý Node.js ekosystém](http://www.vzhurudolu.cz/prirucka/node-instalace).
+
+Pak tento konkrétní projekt:
+
+```bash
+# naklonování projektu
+git clone https://github.com/machal/space-example.git
+# závislosti
+npm install
+# spuštění hlavního Grunt tasku
+grunt
+```
 
 ## Struktura stylů
 
@@ -20,12 +33,6 @@ Kompilujeme do `dist/css/style.css`.
 
 Závislosti řešíme pomocí Browserify.
 
-## Závislosti a npm
-
-Vše potřebné nainstalujete pomocí `npm install`.
-
-Závislosti (jQuery, Fancybox nebo Normalize.CSS) spravujeme pomocí Node.js balíčkovacího systému https://www.npmjs.com/. Viz `package.json`.
-
 
 ## Grunt a automatizace
 
@@ -33,6 +40,13 @@ Důležité tásky:
 
 * `grunt` - spustí vše a nastartuje vývojový server, otevře prohlížeč s nastartovanou synchronizací a pustí hlídání změn
 * Pro jednotlivé typy assetů se může hodit `grunt img`, `grunt css`, `grunt js`.
+
+Viz [Gruntfile.js](blob/master/Gruntfile.js).
+
+---
+
+Autor: Martin Michálek, martin@vzhurudolu.cz
+
 
 
 
