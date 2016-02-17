@@ -101,22 +101,20 @@ module.exports = function(grunt) {
       }
     },
 
-    // Autoprefixer
-    // ------------
 
-    // Automaticky pridava browser prefixy co vykompilovaneho CSS.
+    // PostCSS: pridani prefixu
 
-    autoprefixer: {
+    postcss: {
       options: {
-        browsers: ['last 3 versions', 'ios 6', 'ie 7', 'ie 8', 'ie 9'],
-        map: true // Updatni SourceMap
+        map: true,
+        processors: [
+          require('autoprefixer')({browsers: ['last 3 versions', 'ios 6', 'ie 7', 'ie 8', 'ie 9']}),
+        ]
       },
-      style: {
-          src: 'dist/css/style.css',
-          dest: 'dist/css/style.css'
+      dist: {
+        src: 'dist/css/style.css'
       }
     },
-
 
     // CSSmin
     // ------
@@ -190,10 +188,6 @@ module.exports = function(grunt) {
       mainJS: {
           src: 'dist/js/script.js',
           dest: 'dist/js/script.min.js'
-      },
-      enhance: {
-          src: 'src/js/lib/enhance.js',
-          dest: 'dist/js/lib/enhance.min.js'
       }
     },
 
@@ -334,7 +328,7 @@ module.exports = function(grunt) {
   // 5) Alias tasky
   // ==============
 
-  grunt.registerTask('css', ['less:default', 'autoprefixer', 'cssmin']);
+  grunt.registerTask('css', ['less:default', 'postcss', 'cssmin']);
   grunt.registerTask('critical', ['criticalcss', 'cssmin:critical']);
   grunt.registerTask('img', ['imagemin', 'svg2png']);
   grunt.registerTask('js', ['concat', 'uglify']);
