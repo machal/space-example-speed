@@ -8,7 +8,7 @@ Pak tento konkrétní projekt:
 
 ```bash
 # naklonování projektu
-git clone https://github.com/machal/space-example.git
+git clone https://github.com/machal/space-example-speed.git
 # závislosti
 npm install
 # spuštění hlavního Grunt tasku
