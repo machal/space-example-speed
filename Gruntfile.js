@@ -144,7 +144,7 @@ module.exports = function(grunt) {
     criticalcss: {
         custom: {
             options: {
-                url: "http://localhost:3030/skoleni/2015_24_11_Tipsport_rwd_rychlost/", // TODO sem dat cestu k projektu na localhostu
+                url: "http://localhost:3030/",
                 width: 1200,
                 height: 900,
                 outputfile: "dist/css/critical.css",
