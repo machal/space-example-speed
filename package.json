@@ -1,7 +1,13 @@
 {
-  "name": "space-news-demo",
+  "name": "space-example-speed",
+  "description": "Výchozí stav příkladu pro školení Rychlost načítání.",
   "description": "",
-  "version": "0.0.1",
+  "version": "0.5.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/machal/space-example-speed.git"
+  },
   "contributors": [
     {
       "name": "Martin Michálek"
@@ -10,23 +16,27 @@
   "devDependencies": {
     "autoprefixer": "^6.3.1",
     "browser-sync": "^2.7.1",
+    "bs-html-injector": "^3.0.3",
     "debowerify": "^1.2.1",
     "grunt": "^1.0.1",
     "grunt-browser-sync": "^2.2.0",
     "grunt-browserify": "^5.0.0",
-    "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-cssmin": "^1.0.1",
     "grunt-contrib-imagemin": "^1.0.0",
     "grunt-contrib-less": "^1.2.0",
-    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-watch": "^1.0.0",
-    "grunt-criticalcss": "^1.0.2",
+    "grunt-criticalcss": "^2.1.0",
     "grunt-responsive-images": "^0.1.6",
     "grunt-svg2png": "^0.2.5",
     "grunt-postcss": "^0.8.0",
     "jit-grunt": "^0.10.0",
-    "time-grunt": "^1.1.0"
+    "time-grunt": "^1.1.0",
+    "load-grunt-config": "^0.19.2",
+    "pixrem": "^3.0.0",
+    "postcss-em-media-query": "^1.0.1",
+    "grunt-cssnano": "^2.1.0"
   },
   "dependencies": {
     "ajaxInclude": "filamentgroup/Ajax-Include-Pattern",
