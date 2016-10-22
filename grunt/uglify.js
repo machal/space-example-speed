@@ -5,27 +5,47 @@
 
 module.exports = {
 
-    beautify: {
+    concat: {
       files: {
-        'dist/js/script.js':
+        'src/js/all.js':
         [
-          'node_modules/jquery/dist/jquery.js',
-          'node_modules/fancybox/dist/js/jquery.fancybox.js',
-          // 'node_modules/ajaxInclude/dist/ajaxInclude.js',
+          'src/js/lib/jquery.js',
+          'src/js/lib/jquery.fancybox.js',
+          'src/js/lib/respond.js',
+          'src/js/lib/picturefill.js',
+          'src/js/lib/fontfaceobserver.js',
           'src/js/index.js'
         ]
       },
       options: {
         beautify: true,
-        compress: false
+        compress: false,
+        preserveComments: 'all'
+      }
+    },
+
+    beautify_and_dist: {
+      files: [{
+        expand: true,
+        cwd: 'src/js/',
+        src: '**/*.js',
+        dest: 'dist/js/'
+      }],
+      options: {
+        beautify: true,
+        compress: false,
+        preserveComments: 'all'
       }
     },
 
     minify: {
-      files: {
-        'dist/js/script.min.js':
-          'dist/js/script.js'
-      }
+      files: [{
+        expand: true,
+        cwd: 'src/js/',
+        src: ['**/*.js'],
+        dest: 'dist/js/',
+        ext: '.min.js'
+      }]
     }
 
 };

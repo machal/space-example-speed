@@ -25,7 +25,7 @@ module.exports = {
   ],
 
   default: [
-    'copy:fancybox',
+    'copy',
     'css',
     'js',
     'browserSync',
