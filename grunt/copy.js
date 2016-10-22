@@ -53,6 +53,20 @@ module.exports = {
       }
     },
 
+    load_css_cssrelpreload: {
+      files: {
+        'src/js/lib/cssrelpreload.js':
+          'node_modules/fg-loadcss/src/cssrelpreload.js'
+      }
+    },
+
+    load_css: {
+      files: {
+        'src/js/lib/loadcss.js':
+          'node_modules/fg-loadcss/src/loadCSS.js'
+      }
+    },
+
     fontfaceobserver: {
       files: {
         'src/js/lib/fontfaceobserver.js':

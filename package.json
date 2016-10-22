@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "fancybox": "^3.0.0",
+    "fg-loadcss": "^1.2.0",
     "fontfaceobserver": "^1.4.5",
     "grunt": "^1.0.1",
     "jquery": "^1.11.2",
