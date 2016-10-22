@@ -14,6 +14,7 @@ module.exports = {
       dest: 'dist/img/'
     }]
   },
+
   // Bitmapy v designu
   bitmap: {
     files: [{
@@ -23,15 +24,7 @@ module.exports = {
       dest: 'dist/img/bitmap/'
     }]
   },
-  // Obrazky v obsahu
-  content_img: {
-    files: [{
-      expand: true,
-      cwd: 'src/img/content/',
-      src: ['**/*.jpg','**/*.png','**/*.gif'],
-      dest: 'dist/img/content/'
-    }]
-  },
+
   // Vektory
   vector: {
     files: [{
@@ -41,5 +34,8 @@ module.exports = {
       dest: 'dist/img/vector/'
     }]
   }
+
+  // Obsahove obrazky - src/img/content/
+  // resime pomoci responsive_images
 
 };
