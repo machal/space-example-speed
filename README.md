@@ -7,11 +7,16 @@ Nejprve si musíte [nainstalovat NPM a celý Node.js ekosystém](http://www.vzhu
 Pak tento konkrétní projekt:
 
 ```bash
-# naklonování projektu
+# naklonovani projektu
 git clone https://github.com/machal/space-example-speed.git
-# závislosti
+
+# skok do adresare s projektem
+cd space-example-speed
+
+# instalace zavislosti
 npm install
-# spuštění hlavního Grunt tasku
+
+# spusteni hlavni Grunt ulohy
 grunt
 ```
 
