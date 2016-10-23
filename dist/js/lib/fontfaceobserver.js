@@ -56,7 +56,7 @@
         this.weight = c.weight || "normal";
         this.stretch = c.stretch || "normal";
     }
-    var h = null, i = null, j = !!window.FontFace;
+    var h = null, i = null, j = null;
     function k() {
         if (null === i) {
             var a = document.createElement("div");
@@ -71,22 +71,24 @@
         return [ a.style, a.weight, k() ? a.stretch : "", "100px", b ].join(" ");
     }
     g.prototype.load = function(a, e) {
-        var g = this, i = a || "BESbswy", k = e || 3e3, m = new Date().getTime();
+        var g = this, i = a || "BESbswy", k = 0, m = e || 3e3, n = new Date().getTime();
         return new Promise(function(a, e) {
+            null === j && (j = !!document.fonts);
             if (j) {
-                var n = new Promise(function(a, b) {
+                var o = new Promise(function(a, b) {
                     function c() {
-                        new Date().getTime() - m >= k ? b() : document.fonts.load(l(g, g.family), i).then(function(b) {
+                        new Date().getTime() - n >= m ? b() : document.fonts.load(l(g, '"' + g.family + '"'), i).then(function(b) {
                             1 <= b.length ? a() : setTimeout(c, 25);
                         }, function() {
                             b();
                         });
                     }
                     c();
-                }), o = new Promise(function(a, b) {
-                    setTimeout(b, k);
+                }), p = new Promise(function(a, b) {
+                    k = setTimeout(b, m);
                 });
-                Promise.race([ o, n ]).then(function() {
+                Promise.race([ p, o ]).then(function() {
+                    clearTimeout(k);
                     a(g);
                 }, function() {
                     e(g);
@@ -94,53 +96,52 @@
             } else b(function() {
                 function b() {
                     var b;
-                    if (b = -1 != q && -1 != r || -1 != q && -1 != s || -1 != r && -1 != s) (b = q != r && q != s && r != s) || (null === h && (b = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent), 
+                    if (b = -1 != r && -1 != s || -1 != r && -1 != t || -1 != s && -1 != t) (b = r != s && r != t && s != t) || (null === h && (b = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent), 
                     h = !!b && (536 > parseInt(b[1], 10) || 536 === parseInt(b[1], 10) && 11 >= parseInt(b[2], 10))), 
-                    b = h && (q == t && r == t && s == t || q == u && r == u && s == u || q == v && r == v && s == v)), 
+                    b = h && (r == u && s == u && t == u || r == v && s == v && t == v || r == w && s == w && t == w)), 
                     b = !b;
-                    b && (null !== w.parentNode && w.parentNode.removeChild(w), clearTimeout(x), a(g));
+                    b && (null !== x.parentNode && x.parentNode.removeChild(x), clearTimeout(k), a(g));
                 }
                 function j() {
-                    if (new Date().getTime() - m >= k) null !== w.parentNode && w.parentNode.removeChild(w), 
+                    if (new Date().getTime() - n >= m) null !== x.parentNode && x.parentNode.removeChild(x), 
                     e(g); else {
                         var a = document.hidden;
-                        if (!0 === a || void 0 === a) q = n.a.offsetWidth, r = o.a.offsetWidth, s = p.a.offsetWidth, 
+                        if (!0 === a || void 0 === a) r = o.a.offsetWidth, s = p.a.offsetWidth, t = q.a.offsetWidth, 
                         b();
-                        x = setTimeout(j, 50);
+                        k = setTimeout(j, 50);
                     }
                 }
-                var n = new c(i), o = new c(i), p = new c(i), q = -1, r = -1, s = -1, t = -1, u = -1, v = -1, w = document.createElement("div"), x = 0;
-                w.dir = "ltr";
-                d(n, l(g, "sans-serif"));
-                d(o, l(g, "serif"));
-                d(p, l(g, "monospace"));
-                w.appendChild(n.a);
-                w.appendChild(o.a);
-                w.appendChild(p.a);
-                document.body.appendChild(w);
-                t = n.a.offsetWidth;
+                var o = new c(i), p = new c(i), q = new c(i), r = -1, s = -1, t = -1, u = -1, v = -1, w = -1, x = document.createElement("div");
+                x.dir = "ltr";
+                d(o, l(g, "sans-serif"));
+                d(p, l(g, "serif"));
+                d(q, l(g, "monospace"));
+                x.appendChild(o.a);
+                x.appendChild(p.a);
+                x.appendChild(q.a);
+                document.body.appendChild(x);
                 u = o.a.offsetWidth;
                 v = p.a.offsetWidth;
+                w = q.a.offsetWidth;
                 j();
-                f(n, function(a) {
-                    q = a;
-                    b();
-                });
-                d(n, l(g, '"' + g.family + '",sans-serif'));
                 f(o, function(a) {
                     r = a;
                     b();
                 });
-                d(o, l(g, '"' + g.family + '",serif'));
+                d(o, l(g, '"' + g.family + '",sans-serif'));
                 f(p, function(a) {
                     s = a;
                     b();
                 });
-                d(p, l(g, '"' + g.family + '",monospace'));
+                d(p, l(g, '"' + g.family + '",serif'));
+                f(q, function(a) {
+                    t = a;
+                    b();
+                });
+                d(q, l(g, '"' + g.family + '",monospace'));
             });
         });
     };
-    window.FontFaceObserver = g;
-    window.FontFaceObserver.prototype.check = window.FontFaceObserver.prototype.load = g.prototype.load;
-    "undefined" !== typeof module && (module.exports = window.FontFaceObserver);
+    "undefined" !== typeof module ? module.exports = g : (window.FontFaceObserver = g, 
+    window.FontFaceObserver.prototype.load = g.prototype.load);
 })();
