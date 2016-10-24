@@ -11,7 +11,6 @@ module.exports = {
         [
           'src/js/lib/jquery.js',
           'src/js/lib/jquery.fancybox.js',
-          'src/js/lib/respond.js',
           'src/js/lib/picturefill.js',
           'src/js/lib/fontfaceobserver.js',
           'src/js/index.js'
