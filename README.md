@@ -34,10 +34,11 @@ Kompilujeme do `dist/css/style.css`.
 
 ## Javascript
 
-* `src/js/index.js` – hlavní JS soubor
+* `dist/lib/*` – knihovny používané při práci na projektu
+* `dist/lib/index.js` – hlavní inicializační soubor
+* `dist/lib/all.js` – všechny soubory zabalené do jednoho
 
-Závislosti řešíme pomocí Browserify.
-
+Všechny JS zdrojáky jsou také k dispozici ve zmenšených verzích - `*.min.js`.
 
 ## Grunt a automatizace
 
