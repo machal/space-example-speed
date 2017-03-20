@@ -10,10 +10,6 @@ module.exports = {
     'postcss'
   ],
 
-  criticalcss: [
-    'criticalcss',
-  ],
-
   img: [
     'responsive_images',
     'imagemin',
