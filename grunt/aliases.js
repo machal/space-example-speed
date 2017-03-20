@@ -10,7 +10,7 @@ module.exports = {
     'postcss'
   ],
 
-  critical: [
+  criticalcss: [
     'criticalcss',
   ],
 
@@ -24,10 +24,16 @@ module.exports = {
     'uglify'
   ],
 
-  default: [
+  dist: [
     'copy',
     'css',
     'js',
+    'img',
+    'criticalcss',
+  ],
+
+  default: [
+    'copy',
     'browserSync',
     'watch'
   ]

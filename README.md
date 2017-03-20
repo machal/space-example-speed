@@ -51,6 +51,7 @@ Všechny JS zdrojáky jsou také k dispozici ve zmenšených verzích - `*.min.j
 Důležité tásky:
 
 * `grunt` - spustí vše a nastartuje vývojový server, otevře prohlížeč s nastartovanou synchronizací a pustí hlídání změn
+* `grunt dist` - exportuje distribuční verze souborů včetně obrázků a kritického CSS.
 * Pro jednotlivé typy assetů se může hodit `grunt img`, `grunt css`, `grunt js`.
 
 Viz [Gruntfile.js](blob/master/Gruntfile.js).
