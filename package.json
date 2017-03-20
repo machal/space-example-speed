@@ -21,7 +21,7 @@
     "grunt-browser-sync": "^2.2.0",
     "grunt-browserify": "^5.0.0",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-cssmin": "^2.0.0",
     "grunt-contrib-imagemin": "^1.0.0",
     "grunt-contrib-less": "^1.2.0",
     "grunt-contrib-uglify": "^2.0.0",
@@ -34,7 +34,7 @@
     "time-grunt": "^1.1.0",
     "load-grunt-config": "^0.19.2",
     "pixrem": "^3.0.0",
-    "postcss-em-media-query": "^1.0.1",
+    "postcss-em-media-query": "^2.0.0",
     "grunt-cssnano": "^2.1.0"
   },
   "dependencies": {
