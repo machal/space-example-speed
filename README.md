@@ -1,18 +1,24 @@
-# Příklad ke školení [Optimalizace rychlosti načítání](http://www.vzhurudolu.cz/kurzy/rychlost-nacitani)
+# Příklad ke školení [„Optimalizace rychlosti načítání“](http://www.vzhurudolu.cz/kurzy/rychlost-nacitani)
 
 ## Instalace projektu
 
-Nejprve si musíte [nainstalovat NPM a celý Node.js ekosystém](http://www.vzhurudolu.cz/prirucka/node-instalace).
-
-Pak tento konkrétní projekt:
-
 ```bash
 # naklonovani projektu
-git clone https://github.com/machal/space-example-speed.git
+git clone https://github.com/machal/speed-example.git
 
 # skok do adresare s projektem
-cd space-example-speed
+cd speed-example
+```
 
+V prohlížeči si pak otevřete `index.html`.
+
+## Instalace s Grunt workflow
+
+Pokud chcete využívat celé Grunt workflow, pokračujte sem. Grunt minifikuje soubory, spojuje do jednoho a dělá další optimalizace. Pro školení to nepotřebujeme.
+
+Nejprve si musíte [nainstalovat NPM a celý Node.js ekosystém](http://www.vzhurudolu.cz/prirucka/node-instalace).
+
+```bash
 # instalace zavislosti
 npm install
 
