@@ -45,7 +45,8 @@ module.exports = {
         cwd: 'src/js/',
         src: ['**/*.js'],
         dest: 'dist/js/',
-        ext: '.min.js'
+        ext: '.min.js',
+        extDot: 'last'
       }]
     }
 
