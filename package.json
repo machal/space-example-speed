@@ -43,6 +43,8 @@
     "fontfaceobserver": "^2.0.0",
     "grunt": "^1.0.1",
     "jquery": "^1.11.2",
+    "jquery-mousewheel": "^3.1.13",
+    "jquery-validation": "^1.16.0",
     "picturefill": "^3.0.2",
     "respond.js": "^1.4.2"
   }

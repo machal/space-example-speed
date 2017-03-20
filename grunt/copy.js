@@ -39,6 +39,20 @@ module.exports = {
       }
     },
 
+    jquery_mousewheel: {
+      files: {
+        'src/js/lib/jquery.mousewheel.js':
+          'node_modules/jquery-mousewheel/jquery.mousewheel.js'
+      }
+    },
+
+    jquery_validate: {
+      files: {
+        'src/js/lib/jquery.validate.js':
+          'node_modules/jquery-validation/dist/jquery.validate.js'
+      }
+    },
+
     respond: {
       files: {
         'src/js/lib/respond.js':
