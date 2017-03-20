@@ -10630,7 +10630,7 @@
         this.a.appendChild(this.c);
     }
     function d(a, b) {
-        a.a.style.cssText = "max-width:none;min-width:20px;min-height:20px;display:inline-block;overflow:hidden;position:absolute;width:auto;margin:0;padding:0;top:-999px;left:-999px;white-space:nowrap;font:" + b + ";";
+        a.a.style.cssText = "max-width:none;min-width:20px;min-height:20px;display:inline-block;overflow:hidden;position:absolute;width:auto;margin:0;padding:0;top:-999px;left:-999px;white-space:nowrap;font-synthesis:none;font:" + b + ";";
     }
     function e(a) {
         var b = a.a.offsetWidth, c = b + 100;
@@ -10642,7 +10642,7 @@
     function f(b, c) {
         function d() {
             var a = f;
-            e(a) && null !== a.a.parentNode && c(a.g);
+            e(a) && a.a.parentNode && c(a.g);
         }
         var f = b;
         a(b.b, d);
@@ -10656,39 +10656,49 @@
         this.weight = c.weight || "normal";
         this.stretch = c.stretch || "normal";
     }
-    var h = null, i = null, j = null;
-    function k() {
-        if (null === i) {
+    var h = null, i = null, j = null, k = null;
+    function l() {
+        if (null === i) if (m() && /Apple/.test(window.navigator.vendor)) {
+            var a = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/.exec(window.navigator.userAgent);
+            i = !!a && 603 > parseInt(a[1], 10);
+        } else i = !1;
+        return i;
+    }
+    function m() {
+        null === k && (k = !!document.fonts);
+        return k;
+    }
+    function n() {
+        if (null === j) {
             var a = document.createElement("div");
             try {
                 a.style.font = "condensed 100px sans-serif";
             } catch (a) {}
-            i = "" !== a.style.font;
+            j = "" !== a.style.font;
         }
-        return i;
+        return j;
     }
-    function l(a, b) {
-        return [ a.style, a.weight, k() ? a.stretch : "", "100px", b ].join(" ");
+    function o(a, b) {
+        return [ a.style, a.weight, n() ? a.stretch : "", "100px", b ].join(" ");
     }
     g.prototype.load = function(a, e) {
-        var g = this, i = a || "BESbswy", k = 0, m = e || 3e3, n = new Date().getTime();
+        var g = this, i = a || "BESbswy", j = 0, k = e || 3e3, n = new Date().getTime();
         return new Promise(function(a, e) {
-            null === j && (j = !!document.fonts);
-            if (j) {
-                var o = new Promise(function(a, b) {
+            if (m() && !l()) {
+                var p = new Promise(function(a, b) {
                     function c() {
-                        new Date().getTime() - n >= m ? b() : document.fonts.load(l(g, '"' + g.family + '"'), i).then(function(b) {
+                        new Date().getTime() - n >= k ? b() : document.fonts.load(o(g, '"' + g.family + '"'), i).then(function(b) {
                             1 <= b.length ? a() : setTimeout(c, 25);
                         }, function() {
                             b();
                         });
                     }
                     c();
-                }), p = new Promise(function(a, b) {
-                    k = setTimeout(b, m);
+                }), q = new Promise(function(a, b) {
+                    j = setTimeout(b, k);
                 });
-                Promise.race([ p, o ]).then(function() {
-                    clearTimeout(k);
+                Promise.race([ q, p ]).then(function() {
+                    clearTimeout(j);
                     a(g);
                 }, function() {
                     e(g);
@@ -10700,45 +10710,45 @@
                     h = !!b && (536 > parseInt(b[1], 10) || 536 === parseInt(b[1], 10) && 11 >= parseInt(b[2], 10))), 
                     b = h && (r == u && s == u && t == u || r == v && s == v && t == v || r == w && s == w && t == w)), 
                     b = !b;
-                    b && (null !== x.parentNode && x.parentNode.removeChild(x), clearTimeout(k), a(g));
+                    b && (x.parentNode && x.parentNode.removeChild(x), clearTimeout(j), a(g));
                 }
-                function j() {
-                    if (new Date().getTime() - n >= m) null !== x.parentNode && x.parentNode.removeChild(x), 
+                function l() {
+                    if (new Date().getTime() - n >= k) x.parentNode && x.parentNode.removeChild(x), 
                     e(g); else {
                         var a = document.hidden;
-                        if (!0 === a || void 0 === a) r = o.a.offsetWidth, s = p.a.offsetWidth, t = q.a.offsetWidth, 
+                        if (!0 === a || void 0 === a) r = m.a.offsetWidth, s = p.a.offsetWidth, t = q.a.offsetWidth, 
                         b();
-                        k = setTimeout(j, 50);
+                        j = setTimeout(l, 50);
                     }
                 }
-                var o = new c(i), p = new c(i), q = new c(i), r = -1, s = -1, t = -1, u = -1, v = -1, w = -1, x = document.createElement("div");
+                var m = new c(i), p = new c(i), q = new c(i), r = -1, s = -1, t = -1, u = -1, v = -1, w = -1, x = document.createElement("div");
                 x.dir = "ltr";
-                d(o, l(g, "sans-serif"));
-                d(p, l(g, "serif"));
-                d(q, l(g, "monospace"));
-                x.appendChild(o.a);
+                d(m, o(g, "sans-serif"));
+                d(p, o(g, "serif"));
+                d(q, o(g, "monospace"));
+                x.appendChild(m.a);
                 x.appendChild(p.a);
                 x.appendChild(q.a);
                 document.body.appendChild(x);
-                u = o.a.offsetWidth;
+                u = m.a.offsetWidth;
                 v = p.a.offsetWidth;
                 w = q.a.offsetWidth;
-                j();
-                f(o, function(a) {
+                l();
+                f(m, function(a) {
                     r = a;
                     b();
                 });
-                d(o, l(g, '"' + g.family + '",sans-serif'));
+                d(m, o(g, '"' + g.family + '",sans-serif'));
                 f(p, function(a) {
                     s = a;
                     b();
                 });
-                d(p, l(g, '"' + g.family + '",serif'));
+                d(p, o(g, '"' + g.family + '",serif'));
                 f(q, function(a) {
                     t = a;
                     b();
                 });
-                d(q, l(g, '"' + g.family + '",monospace'));
+                d(q, o(g, '"' + g.family + '",monospace'));
             });
         });
     };

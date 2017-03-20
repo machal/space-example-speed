@@ -1,4 +1,4 @@
-/*! loadCSS: load a CSS file asynchronously. [c]2016 @scottjehl, Filament Group, Inc. Licensed MIT */
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 (function(a) {
     "use strict";
     /* exported loadCSS */
@@ -37,7 +37,7 @@
         j(function() {
             g.parentNode.insertBefore(f, c ? g : g.nextSibling);
         });
-        // A method (exposed on return object for external use) that mimics onload by polling until document.styleSheets until it includes the new sheet.
+        // A method (exposed on return object for external use) that mimics onload by polling document.styleSheets until it includes the new sheet.
         var k = function(a) {
             var b = f.href;
             var c = i.length;
