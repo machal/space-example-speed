@@ -30,8 +30,7 @@ module.exports = {
 
   default: [
     'copy',
-    'browserSync',
-    'watch'
+    'browserSync'
   ]
 
 };

@@ -17,7 +17,6 @@ module.exports = {
         ]
     },
     options: {
-        watchTask: true,
         server: './',
         plugins: [
             {
