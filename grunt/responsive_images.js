@@ -39,8 +39,8 @@ module.exports = {
     files: {
       expand: true,
       src: ['**.jpg'],
-      cwd: 'src/img/content/',
-      dest: 'dist/img/content/'
+      cwd: 'dist/img/content-default/',
+      dest: 'dist/img/responsive-images/'
     }
 
 };
