@@ -13,7 +13,6 @@ module.exports = {
           'src/js/lib/jquery.fancybox.js',
           'src/js/lib/jquery.mousewheel.js',
           'src/js/lib/jquery.validate.js',
-          'src/js/lib/picturefill.js',
           'src/js/lib/fontfaceobserver.js',
           'src/js/index.js'
         ]

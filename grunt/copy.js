@@ -53,20 +53,6 @@ module.exports = {
       }
     },
 
-    respond: {
-      files: {
-        'src/js/lib/respond.js':
-          'node_modules/respond.js/dest/respond.matchmedia.addListener.src.js'
-      }
-    },
-
-    picturefill: {
-      files: {
-        'src/js/lib/picturefill.js':
-          'node_modules/picturefill/dist/picturefill.js'
-      }
-    },
-
     load_css_cssrelpreload: {
       files: {
         'src/js/lib/cssrelpreload.js':
