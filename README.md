@@ -1,4 +1,4 @@
-# Příklad ke školení [„Optimalizace rychlosti načítání“](http://www.vzhurudolu.cz/kurzy/rychlost-nacitani)
+# Příklad ke školení [„Optimalizace rychlosti načítání“](https://www.vzhurudolu.cz/kurzy/rychlost-nacitani)
 
 ## Instalace projektu
 
@@ -16,7 +16,7 @@ V prohlížeči si pak otevřete `index.html`.
 
 Pokud chcete využívat celé Grunt workflow, pokračujte sem. Grunt minifikuje soubory, spojuje do jednoho a dělá další optimalizace. Pro školení to nepotřebujeme.
 
-Nejprve si musíte [nainstalovat NPM a celý Node.js ekosystém](http://www.vzhurudolu.cz/prirucka/node-instalace).
+Nejprve si musíte [nainstalovat NPM a celý Node.js ekosystém](https://www.vzhurudolu.cz/prirucka/node-instalace).
 
 ```bash
 # instalace zavislosti
