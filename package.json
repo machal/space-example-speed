@@ -35,12 +35,15 @@
     "load-grunt-config": "^0.19.2",
     "pixrem": "^4.0.1",
     "postcss-em-media-query": "^2.0.0",
-    "grunt-cssnano": "^2.1.0"
+    "grunt-cssnano": "^2.1.0",
+    "imagemin-mozjpeg": "^7.0.0"
   },
   "dependencies": {
     "fancybox": "^3.0.0",
     "fg-loadcss": "^2.0.1",
     "fontfaceobserver": "^2.0.13",
+    "imagemin-guetzli": "^1.0.0",
+    "imagemin-webp": "^4.1.0",
     "jquery": "^3.3.1",
     "jquery-mousewheel": "^3.1.13",
     "jquery-validation": "^1.17.0",

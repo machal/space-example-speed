@@ -10,10 +10,12 @@ module.exports = {
     'postcss'
   ],
 
-  img: [
-    'responsive_images',
-    'imagemin',
-    'svg2png'
+  content_img: [
+    'imagemin:content',
+    'imagemin:content_nonprogressive',
+    'imagemin:content_mozjpeg',
+    'imagemin:content_guetzli',
+    'imagemin:content_webp'
   ],
 
   js: [
