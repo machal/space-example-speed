@@ -58,6 +58,13 @@ Viz [Gruntfile.js](blob/master/Gruntfile.js).
 
 ---
 
+## Zdroje obrázků
+
+- https://en.wikipedia.org/wiki/Orion_(spacecraft)
+- https://www.nasa.gov/exploration/systems/orion/gallery/index.html
+
+---
+
 Autor: Martin Michálek, martin@vzhurudolu.cz
 
 
