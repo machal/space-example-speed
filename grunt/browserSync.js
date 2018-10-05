@@ -6,30 +6,25 @@
 // Injectuje zmeny v bsFiles bez nutnosti reloadu.
 // Synchronizuje zobrazeni napric zarizenimi.
 
-'use strict';
+"use strict";
 
 module.exports = {
-
   dev: {
     bsFiles: {
-        src : [
-          'dist/css/*.css'
-        ]
+      src: ["dist/css/*.css"]
     },
     options: {
-        server: './',
-        plugins: [
-            {
-                module: "bs-html-injector",
-                options: {
-                    files: "./*.html"
-                }
-            }
-        ]
+      // S timto nefunguje TODO
+      // watchTask: true,
+      server: "./",
+      plugins: [
+        {
+          module: "bs-html-injector",
+          options: {
+            files: "./*.html"
+          }
+        }
+      ]
     }
   }
-
 };
-
-
-
