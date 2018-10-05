@@ -1,192 +1,147 @@
-/*!
- * jQuery Mousewheel 3.1.13
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license
- * http://jquery.org/license
- */
-(function(a) {
+(function(e) {
     if (typeof define === "function" && define.amd) {
-        // AMD. Register as an anonymous module.
-        define([ "jquery" ], a);
+        define([ "jquery" ], e);
     } else if (typeof exports === "object") {
-        // Node/CommonJS style for Browserify
-        module.exports = a;
+        module.exports = e;
     } else {
-        // Browser globals
-        a(jQuery);
+        e(jQuery);
     }
-})(function(a) {
-    var b = [ "wheel", "mousewheel", "DOMMouseScroll", "MozMousePixelScroll" ], c = "onwheel" in document || document.documentMode >= 9 ? [ "wheel" ] : [ "mousewheel", "DomMouseScroll", "MozMousePixelScroll" ], d = Array.prototype.slice, e, f;
-    if (a.event.fixHooks) {
-        for (var g = b.length; g; ) {
-            a.event.fixHooks[b[--g]] = a.event.mouseHooks;
+})(function(d) {
+    var e = [ "wheel", "mousewheel", "DOMMouseScroll", "MozMousePixelScroll" ], t = "onwheel" in document || document.documentMode >= 9 ? [ "wheel" ] : [ "mousewheel", "DomMouseScroll", "MozMousePixelScroll" ], c = Array.prototype.slice, m, g;
+    if (d.event.fixHooks) {
+        for (var i = e.length; i; ) {
+            d.event.fixHooks[e[--i]] = d.event.mouseHooks;
         }
     }
-    var h = a.event.special.mousewheel = {
+    var w = d.event.special.mousewheel = {
         version: "3.1.12",
         setup: function() {
             if (this.addEventListener) {
-                for (var b = c.length; b; ) {
-                    this.addEventListener(c[--b], i, false);
+                for (var e = t.length; e; ) {
+                    this.addEventListener(t[--e], n, false);
                 }
             } else {
-                this.onmousewheel = i;
+                this.onmousewheel = n;
             }
-            // Store the line height and page height for this particular element
-            a.data(this, "mousewheel-line-height", h.getLineHeight(this));
-            a.data(this, "mousewheel-page-height", h.getPageHeight(this));
+            d.data(this, "mousewheel-line-height", w.getLineHeight(this));
+            d.data(this, "mousewheel-page-height", w.getPageHeight(this));
         },
         teardown: function() {
             if (this.removeEventListener) {
-                for (var b = c.length; b; ) {
-                    this.removeEventListener(c[--b], i, false);
+                for (var e = t.length; e; ) {
+                    this.removeEventListener(t[--e], n, false);
                 }
             } else {
                 this.onmousewheel = null;
             }
-            // Clean up the data we added to the element
-            a.removeData(this, "mousewheel-line-height");
-            a.removeData(this, "mousewheel-page-height");
+            d.removeData(this, "mousewheel-line-height");
+            d.removeData(this, "mousewheel-page-height");
         },
-        getLineHeight: function(b) {
-            var c = a(b), d = c["offsetParent" in a.fn ? "offsetParent" : "parent"]();
-            if (!d.length) {
-                d = a("body");
+        getLineHeight: function(e) {
+            var t = d(e), i = t["offsetParent" in d.fn ? "offsetParent" : "parent"]();
+            if (!i.length) {
+                i = d("body");
             }
-            return parseInt(d.css("fontSize"), 10) || parseInt(c.css("fontSize"), 10) || 16;
+            return parseInt(i.css("fontSize"), 10) || parseInt(t.css("fontSize"), 10) || 16;
         },
-        getPageHeight: function(b) {
-            return a(b).height();
+        getPageHeight: function(e) {
+            return d(e).height();
         },
         settings: {
             adjustOldDeltas: true,
-            // see shouldAdjustOldDeltas() below
             normalizeOffset: true
         }
     };
-    a.fn.extend({
-        mousewheel: function(a) {
-            return a ? this.bind("mousewheel", a) : this.trigger("mousewheel");
+    d.fn.extend({
+        mousewheel: function(e) {
+            return e ? this.bind("mousewheel", e) : this.trigger("mousewheel");
         },
-        unmousewheel: function(a) {
-            return this.unbind("mousewheel", a);
+        unmousewheel: function(e) {
+            return this.unbind("mousewheel", e);
         }
     });
-    function i(b) {
-        var c = b || window.event, g = d.call(arguments, 1), i = 0, l = 0, m = 0, n = 0, o = 0, p = 0;
-        b = a.event.fix(c);
-        b.type = "mousewheel";
-        // Old school scrollwheel delta
-        if ("detail" in c) {
-            m = c.detail * -1;
+    function n(e) {
+        var t = e || window.event, i = c.call(arguments, 1), n = 0, l = 0, o = 0, s = 0, a = 0, h = 0;
+        e = d.event.fix(t);
+        e.type = "mousewheel";
+        if ("detail" in t) {
+            o = t.detail * -1;
         }
-        if ("wheelDelta" in c) {
-            m = c.wheelDelta;
+        if ("wheelDelta" in t) {
+            o = t.wheelDelta;
         }
-        if ("wheelDeltaY" in c) {
-            m = c.wheelDeltaY;
+        if ("wheelDeltaY" in t) {
+            o = t.wheelDeltaY;
         }
-        if ("wheelDeltaX" in c) {
-            l = c.wheelDeltaX * -1;
+        if ("wheelDeltaX" in t) {
+            l = t.wheelDeltaX * -1;
         }
-        // Firefox < 17 horizontal scrolling related to DOMMouseScroll event
-        if ("axis" in c && c.axis === c.HORIZONTAL_AXIS) {
-            l = m * -1;
-            m = 0;
+        if ("axis" in t && t.axis === t.HORIZONTAL_AXIS) {
+            l = o * -1;
+            o = 0;
         }
-        // Set delta to be deltaY or deltaX if deltaY is 0 for backwards compatabilitiy
-        i = m === 0 ? l : m;
-        // New school wheel delta (wheel event)
-        if ("deltaY" in c) {
-            m = c.deltaY * -1;
-            i = m;
+        n = o === 0 ? l : o;
+        if ("deltaY" in t) {
+            o = t.deltaY * -1;
+            n = o;
         }
-        if ("deltaX" in c) {
-            l = c.deltaX;
-            if (m === 0) {
-                i = l * -1;
+        if ("deltaX" in t) {
+            l = t.deltaX;
+            if (o === 0) {
+                n = l * -1;
             }
         }
-        // No change actually happened, no reason to go any further
-        if (m === 0 && l === 0) {
+        if (o === 0 && l === 0) {
             return;
         }
-        // Need to convert lines and pages to pixels if we aren't already in pixels
-        // There are three delta modes:
-        //   * deltaMode 0 is by pixels, nothing to do
-        //   * deltaMode 1 is by lines
-        //   * deltaMode 2 is by pages
-        if (c.deltaMode === 1) {
-            var q = a.data(this, "mousewheel-line-height");
-            i *= q;
-            m *= q;
-            l *= q;
-        } else if (c.deltaMode === 2) {
-            var r = a.data(this, "mousewheel-page-height");
-            i *= r;
-            m *= r;
+        if (t.deltaMode === 1) {
+            var f = d.data(this, "mousewheel-line-height");
+            n *= f;
+            o *= f;
+            l *= f;
+        } else if (t.deltaMode === 2) {
+            var r = d.data(this, "mousewheel-page-height");
+            n *= r;
+            o *= r;
             l *= r;
         }
-        // Store lowest absolute delta to normalize the delta values
-        n = Math.max(Math.abs(m), Math.abs(l));
-        if (!f || n < f) {
-            f = n;
-            // Adjust older deltas if necessary
-            if (k(c, n)) {
-                f /= 40;
+        s = Math.max(Math.abs(o), Math.abs(l));
+        if (!g || s < g) {
+            g = s;
+            if (p(t, s)) {
+                g /= 40;
             }
         }
-        // Adjust older deltas if necessary
-        if (k(c, n)) {
-            // Divide all the things by 40!
-            i /= 40;
+        if (p(t, s)) {
+            n /= 40;
             l /= 40;
-            m /= 40;
+            o /= 40;
         }
-        // Get a whole, normalized value for the deltas
-        i = Math[i >= 1 ? "floor" : "ceil"](i / f);
-        l = Math[l >= 1 ? "floor" : "ceil"](l / f);
-        m = Math[m >= 1 ? "floor" : "ceil"](m / f);
-        // Normalise offsetX and offsetY properties
-        if (h.settings.normalizeOffset && this.getBoundingClientRect) {
-            var s = this.getBoundingClientRect();
-            o = b.clientX - s.left;
-            p = b.clientY - s.top;
+        n = Math[n >= 1 ? "floor" : "ceil"](n / g);
+        l = Math[l >= 1 ? "floor" : "ceil"](l / g);
+        o = Math[o >= 1 ? "floor" : "ceil"](o / g);
+        if (w.settings.normalizeOffset && this.getBoundingClientRect) {
+            var u = this.getBoundingClientRect();
+            a = e.clientX - u.left;
+            h = e.clientY - u.top;
         }
-        // Add information to the event object
-        b.deltaX = l;
-        b.deltaY = m;
-        b.deltaFactor = f;
-        b.offsetX = o;
-        b.offsetY = p;
-        // Go ahead and set deltaMode to 0 since we converted to pixels
-        // Although this is a little odd since we overwrite the deltaX/Y
-        // properties with normalized deltas.
-        b.deltaMode = 0;
-        // Add event and delta to the front of the arguments
-        g.unshift(b, i, l, m);
-        // Clearout lowestDelta after sometime to better
-        // handle multiple device types that give different
-        // a different lowestDelta
-        // Ex: trackpad = 3 and mouse wheel = 120
-        if (e) {
-            clearTimeout(e);
+        e.deltaX = l;
+        e.deltaY = o;
+        e.deltaFactor = g;
+        e.offsetX = a;
+        e.offsetY = h;
+        e.deltaMode = 0;
+        i.unshift(e, n, l, o);
+        if (m) {
+            clearTimeout(m);
         }
-        e = setTimeout(j, 200);
-        return (a.event.dispatch || a.event.handle).apply(this, g);
+        m = setTimeout(v, 200);
+        return (d.event.dispatch || d.event.handle).apply(this, i);
     }
-    function j() {
-        f = null;
+    function v() {
+        g = null;
     }
-    function k(a, b) {
-        // If this is an older event and the delta is divisable by 120,
-        // then we are assuming that the browser is treating this as an
-        // older mouse wheel event and that we should divide the deltas
-        // by 40 to try and get a more usable deltaFactor.
-        // Side note, this actually impacts the reported scroll distance
-        // in older browsers and can cause scrolling to be slower than native.
-        // Turn this off by setting $.event.special.mousewheel.settings.adjustOldDeltas to false.
-        return h.settings.adjustOldDeltas && a.type === "mousewheel" && b % 120 === 0;
+    function p(e, t) {
+        return w.settings.adjustOldDeltas && e.type === "mousewheel" && t % 120 === 0;
     }
 });

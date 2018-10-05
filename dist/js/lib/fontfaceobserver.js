@@ -1,20 +1,20 @@
 (function() {
-    function a(a, b) {
-        document.addEventListener ? a.addEventListener("scroll", b, !1) : a.attachEvent("scroll", b);
+    function o(e, t) {
+        document.addEventListener ? e.addEventListener("scroll", t, !1) : e.attachEvent("scroll", t);
     }
-    function b(a) {
-        document.body ? a() : document.addEventListener ? document.addEventListener("DOMContentLoaded", function b() {
-            document.removeEventListener("DOMContentLoaded", b);
-            a();
-        }) : document.attachEvent("onreadystatechange", function b() {
-            if ("interactive" == document.readyState || "complete" == document.readyState) document.detachEvent("onreadystatechange", b), 
-            a();
+    function n(t) {
+        document.body ? t() : document.addEventListener ? document.addEventListener("DOMContentLoaded", function e() {
+            document.removeEventListener("DOMContentLoaded", e);
+            t();
+        }) : document.attachEvent("onreadystatechange", function e() {
+            if ("interactive" == document.readyState || "complete" == document.readyState) document.detachEvent("onreadystatechange", e), 
+            t();
         });
     }
-    function c(a) {
+    function g(e) {
         this.a = document.createElement("div");
         this.a.setAttribute("aria-hidden", "true");
-        this.a.appendChild(document.createTextNode(a));
+        this.a.appendChild(document.createTextNode(e));
         this.b = document.createElement("span");
         this.c = document.createElement("span");
         this.h = document.createElement("span");
@@ -29,129 +29,129 @@
         this.a.appendChild(this.b);
         this.a.appendChild(this.c);
     }
-    function d(a, b) {
-        a.a.style.cssText = "max-width:none;min-width:20px;min-height:20px;display:inline-block;overflow:hidden;position:absolute;width:auto;margin:0;padding:0;top:-999px;left:-999px;white-space:nowrap;font-synthesis:none;font:" + b + ";";
+    function x(e, t) {
+        e.a.style.cssText = "max-width:none;min-width:20px;min-height:20px;display:inline-block;overflow:hidden;position:absolute;width:auto;margin:0;padding:0;top:-999px;white-space:nowrap;font-synthesis:none;font:" + t + ";";
     }
-    function e(a) {
-        var b = a.a.offsetWidth, c = b + 100;
-        a.f.style.width = c + "px";
-        a.c.scrollLeft = c;
-        a.b.scrollLeft = a.b.scrollWidth + 100;
-        return a.g !== b ? (a.g = b, !0) : !1;
+    function a(e) {
+        var t = e.a.offsetWidth, n = t + 100;
+        e.f.style.width = n + "px";
+        e.c.scrollLeft = n;
+        e.b.scrollLeft = e.b.scrollWidth + 100;
+        return e.g !== t ? (e.g = t, !0) : !1;
     }
-    function f(b, c) {
-        function d() {
-            var a = f;
-            e(a) && a.a.parentNode && c(a.g);
+    function E(e, t) {
+        function n() {
+            var e = i;
+            a(e) && e.a.parentNode && t(e.g);
         }
-        var f = b;
-        a(b.b, d);
-        a(b.c, d);
-        e(b);
+        var i = e;
+        o(e.b, n);
+        o(e.c, n);
+        a(e);
     }
-    function g(a, b) {
-        var c = b || {};
-        this.family = a;
-        this.style = c.style || "normal";
-        this.weight = c.weight || "normal";
-        this.stretch = c.stretch || "normal";
+    function e(e, t) {
+        var n = t || {};
+        this.family = e;
+        this.style = n.style || "normal";
+        this.weight = n.weight || "normal";
+        this.stretch = n.stretch || "normal";
     }
-    var h = null, i = null, j = null, k = null;
+    var T = null, t = null, i = null, s = null;
+    function d() {
+        if (null === t) if (l() && /Apple/.test(window.navigator.vendor)) {
+            var e = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/.exec(window.navigator.userAgent);
+            t = !!e && 603 > parseInt(e[1], 10);
+        } else t = !1;
+        return t;
+    }
     function l() {
-        if (null === i) if (m() && /Apple/.test(window.navigator.vendor)) {
-            var a = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/.exec(window.navigator.userAgent);
-            i = !!a && 603 > parseInt(a[1], 10);
-        } else i = !1;
+        null === s && (s = !!document.fonts);
+        return s;
+    }
+    function c() {
+        if (null === i) {
+            var e = document.createElement("div");
+            try {
+                e.style.font = "condensed 100px sans-serif";
+            } catch (e) {}
+            i = "" !== e.style.font;
+        }
         return i;
     }
-    function m() {
-        null === k && (k = !!document.fonts);
-        return k;
+    function C(e, t) {
+        return [ e.style, e.weight, c() ? e.stretch : "", "100px", t ].join(" ");
     }
-    function n() {
-        if (null === j) {
-            var a = document.createElement("div");
-            try {
-                a.style.font = "condensed 100px sans-serif";
-            } catch (a) {}
-            j = "" !== a.style.font;
-        }
-        return j;
-    }
-    function o(a, b) {
-        return [ a.style, a.weight, n() ? a.stretch : "", "100px", b ].join(" ");
-    }
-    g.prototype.load = function(a, e) {
-        var g = this, i = a || "BESbswy", j = 0, k = e || 3e3, n = new Date().getTime();
-        return new Promise(function(a, e) {
-            if (m() && !l()) {
-                var p = new Promise(function(a, b) {
-                    function c() {
-                        new Date().getTime() - n >= k ? b() : document.fonts.load(o(g, '"' + g.family + '"'), i).then(function(b) {
-                            1 <= b.length ? a() : setTimeout(c, 25);
+    e.prototype.load = function(e, t) {
+        var m = this, w = e || "BESbswy", v = 0, y = t || 3e3, b = new Date().getTime();
+        return new Promise(function(u, p) {
+            if (l() && !d()) {
+                var e = new Promise(function(t, e) {
+                    function n() {
+                        new Date().getTime() - b >= y ? e() : document.fonts.load(C(m, '"' + m.family + '"'), w).then(function(e) {
+                            1 <= e.length ? t() : setTimeout(n, 25);
                         }, function() {
-                            b();
+                            e();
                         });
                     }
-                    c();
-                }), q = new Promise(function(a, b) {
-                    j = setTimeout(b, k);
+                    n();
+                }), t = new Promise(function(e, t) {
+                    v = setTimeout(t, y);
                 });
-                Promise.race([ q, p ]).then(function() {
-                    clearTimeout(j);
-                    a(g);
+                Promise.race([ t, e ]).then(function() {
+                    clearTimeout(v);
+                    u(m);
                 }, function() {
-                    e(g);
+                    p(m);
                 });
-            } else b(function() {
-                function b() {
-                    var b;
-                    if (b = -1 != r && -1 != s || -1 != r && -1 != t || -1 != s && -1 != t) (b = r != s && r != t && s != t) || (null === h && (b = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent), 
-                    h = !!b && (536 > parseInt(b[1], 10) || 536 === parseInt(b[1], 10) && 11 >= parseInt(b[2], 10))), 
-                    b = h && (r == u && s == u && t == u || r == v && s == v && t == v || r == w && s == w && t == w)), 
-                    b = !b;
-                    b && (x.parentNode && x.parentNode.removeChild(x), clearTimeout(j), a(g));
+            } else n(function() {
+                function t() {
+                    var e;
+                    if (e = -1 != s && -1 != d || -1 != s && -1 != l || -1 != d && -1 != l) (e = s != d && s != l && d != l) || (null === T && (e = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent), 
+                    T = !!e && (536 > parseInt(e[1], 10) || 536 === parseInt(e[1], 10) && 11 >= parseInt(e[2], 10))), 
+                    e = T && (s == c && d == c && l == c || s == r && d == r && l == r || s == h && d == h && l == h)), 
+                    e = !e;
+                    e && (f.parentNode && f.parentNode.removeChild(f), clearTimeout(v), u(m));
                 }
-                function l() {
-                    if (new Date().getTime() - n >= k) x.parentNode && x.parentNode.removeChild(x), 
-                    e(g); else {
-                        var a = document.hidden;
-                        if (!0 === a || void 0 === a) r = m.a.offsetWidth, s = p.a.offsetWidth, t = q.a.offsetWidth, 
-                        b();
-                        j = setTimeout(l, 50);
+                function n() {
+                    if (new Date().getTime() - b >= y) f.parentNode && f.parentNode.removeChild(f), 
+                    p(m); else {
+                        var e = document.hidden;
+                        if (!0 === e || void 0 === e) s = i.a.offsetWidth, d = o.a.offsetWidth, l = a.a.offsetWidth, 
+                        t();
+                        v = setTimeout(n, 50);
                     }
                 }
-                var m = new c(i), p = new c(i), q = new c(i), r = -1, s = -1, t = -1, u = -1, v = -1, w = -1, x = document.createElement("div");
-                x.dir = "ltr";
-                d(m, o(g, "sans-serif"));
-                d(p, o(g, "serif"));
-                d(q, o(g, "monospace"));
-                x.appendChild(m.a);
-                x.appendChild(p.a);
-                x.appendChild(q.a);
-                document.body.appendChild(x);
-                u = m.a.offsetWidth;
-                v = p.a.offsetWidth;
-                w = q.a.offsetWidth;
-                l();
-                f(m, function(a) {
-                    r = a;
-                    b();
+                var i = new g(w), o = new g(w), a = new g(w), s = -1, d = -1, l = -1, c = -1, r = -1, h = -1, f = document.createElement("div");
+                f.dir = "ltr";
+                x(i, C(m, "sans-serif"));
+                x(o, C(m, "serif"));
+                x(a, C(m, "monospace"));
+                f.appendChild(i.a);
+                f.appendChild(o.a);
+                f.appendChild(a.a);
+                document.body.appendChild(f);
+                c = i.a.offsetWidth;
+                r = o.a.offsetWidth;
+                h = a.a.offsetWidth;
+                n();
+                E(i, function(e) {
+                    s = e;
+                    t();
                 });
-                d(m, o(g, '"' + g.family + '",sans-serif'));
-                f(p, function(a) {
-                    s = a;
-                    b();
+                x(i, C(m, '"' + m.family + '",sans-serif'));
+                E(o, function(e) {
+                    d = e;
+                    t();
                 });
-                d(p, o(g, '"' + g.family + '",serif'));
-                f(q, function(a) {
-                    t = a;
-                    b();
+                x(o, C(m, '"' + m.family + '",serif'));
+                E(a, function(e) {
+                    l = e;
+                    t();
                 });
-                d(q, o(g, '"' + g.family + '",monospace'));
+                x(a, C(m, '"' + m.family + '",monospace'));
             });
         });
     };
-    "undefined" !== typeof module ? module.exports = g : (window.FontFaceObserver = g, 
-    window.FontFaceObserver.prototype.load = g.prototype.load);
+    "object" === typeof module ? module.exports = e : (window.FontFaceObserver = e, 
+    window.FontFaceObserver.prototype.load = e.prototype.load);
 })();

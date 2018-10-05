@@ -26,7 +26,6 @@ module.exports = {
     'copy',
     'css',
     'js',
-    'img',
     'criticalcss',
   ],
 

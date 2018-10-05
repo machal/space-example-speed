@@ -1,21 +1,19 @@
-/*! loadJS: load a JS file asynchronously. [c]2014 @scottjehl, Filament Group, Inc. (Based on http://goo.gl/REQGQ by Paul Irish). Licensed MIT */
-(function(a) {
-    var b = function(b, c) {
+(function(r) {
+    var e = function(e, t) {
         "use strict";
-        var d = a.document.getElementsByTagName("script")[0];
-        var e = a.document.createElement("script");
-        e.src = b;
-        e.async = true;
-        d.parentNode.insertBefore(e, d);
-        if (c && typeof c === "function") {
-            e.onload = c;
+        var n = r.document.getElementsByTagName("script")[0];
+        var o = r.document.createElement("script");
+        o.src = e;
+        o.async = true;
+        n.parentNode.insertBefore(o, n);
+        if (t && typeof t === "function") {
+            o.onload = t;
         }
-        return e;
+        return o;
     };
-    // commonjs
     if (typeof module !== "undefined") {
-        module.exports = b;
+        module.exports = e;
     } else {
-        a.loadJS = b;
+        r.loadJS = e;
     }
 })(typeof global !== "undefined" ? global : this);

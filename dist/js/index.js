@@ -1,9 +1,7 @@
 $(document).ready(function() {
-    // Ovladani navigace na mobilech
-    $(".head-hamburger a").click(function(a) {
-        a.preventDefault();
+    $(".head-hamburger a").click(function(n) {
+        n.preventDefault();
         $("#nav").toggle();
     });
-    // Inicializace Fancyboxu
     $(".fancybox").fancybox();
 });

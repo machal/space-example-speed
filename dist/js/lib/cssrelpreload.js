@@ -1,42 +1,67 @@
-/*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */
-(function(a) {
-    // rel=preload support test
-    if (!a.loadCSS) {
-        return;
+(function(n) {
+    "use strict";
+    if (!n.loadCSS) {
+        n.loadCSS = function() {};
     }
-    var b = loadCSS.relpreload = {};
-    b.support = function() {
+    var o = loadCSS.relpreload = {};
+    o.support = function() {
+        var t;
         try {
-            return a.document.createElement("link").relList.supports("preload");
-        } catch (a) {
-            return false;
+            t = n.document.createElement("link").relList.supports("preload");
+        } catch (e) {
+            t = false;
         }
+        return function() {
+            return t;
+        };
+    }();
+    o.bindMediaToggle = function(e) {
+        var t = e.media || "all";
+        function a() {
+            e.media = t;
+        }
+        if (e.addEventListener) {
+            e.addEventListener("load", a);
+        } else if (e.attachEvent) {
+            e.attachEvent("onload", a);
+        }
+        setTimeout(function() {
+            e.rel = "stylesheet";
+            e.media = "only x";
+        });
+        setTimeout(a, 3e3);
     };
-    // loop preload links and fetch using loadCSS
-    b.poly = function() {
-        var b = a.document.getElementsByTagName("link");
-        for (var c = 0; c < b.length; c++) {
-            var d = b[c];
-            if (d.rel === "preload" && d.getAttribute("as") === "style") {
-                a.loadCSS(d.href, d, d.getAttribute("media"));
-                d.rel = null;
+    o.poly = function() {
+        if (o.support()) {
+            return;
+        }
+        var e = n.document.getElementsByTagName("link");
+        for (var t = 0; t < e.length; t++) {
+            var a = e[t];
+            if (a.rel === "preload" && a.getAttribute("as") === "style" && !a.getAttribute("data-loadcss")) {
+                a.setAttribute("data-loadcss", true);
+                o.bindMediaToggle(a);
             }
         }
     };
-    // if link[rel=preload] is not supported, we must fetch the CSS manually using loadCSS
-    if (!b.support()) {
-        b.poly();
-        var c = a.setInterval(b.poly, 300);
-        if (a.addEventListener) {
-            a.addEventListener("load", function() {
-                b.poly();
-                a.clearInterval(c);
+    if (!o.support()) {
+        o.poly();
+        var e = n.setInterval(o.poly, 500);
+        if (n.addEventListener) {
+            n.addEventListener("load", function() {
+                o.poly();
+                n.clearInterval(e);
             });
-        }
-        if (a.attachEvent) {
-            a.attachEvent("onload", function() {
-                a.clearInterval(c);
+        } else if (n.attachEvent) {
+            n.attachEvent("onload", function() {
+                o.poly();
+                n.clearInterval(e);
             });
         }
     }
-})(this);
+    if (typeof exports !== "undefined") {
+        exports.loadCSS = loadCSS;
+    } else {
+        n.loadCSS = loadCSS;
+    }
+})(typeof global !== "undefined" ? global : this);
