@@ -19,11 +19,7 @@
 
     <link rel="stylesheet" href="dist/css/style.css">
 
-    <script src="dist/js/lib/jquery.js"></script>
-    <script src="dist/js/lib/jquery.fancybox.js"></script>
-    <script src="dist/js/lib/jquery.mousewheel.js"></script>
-    <script src="dist/js/lib/jquery.validate.js"></script>
-    <script src="dist/js/index.js"></script>
+    <script src="dist/js/all.min.js" async></script>
 
   </head>
 
@@ -83,7 +79,21 @@
         </p>
 
         <p class="photo">
-          <img src="dist/img/responsive-images/orion_1-lg.jpg" alt="Orion" height="602">
+          <img
+            srcset="
+              dist/img/responsive-images/orion_1-xs.jpg 400w,
+              dist/img/responsive-images/orion_1-sm.jpg 768w,
+              dist/img/responsive-images/orion_1-md.jpg 1024w,
+              dist/img/responsive-images/orion_1-lg.jpg 1300w,
+              dist/img/responsive-images/orion_1-xl.jpg 1600w,
+            "
+            src="dist/img/responsive-images/orion_1-lg.jpg"
+            sizes="
+              (max-width: 800px) calc(100vw - 30px),
+              (max-width: 991px) 750px,
+              940px,
+            "
+            alt="Orion" height="602">
         </p>
 
         <p>
