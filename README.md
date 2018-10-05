@@ -66,15 +66,3 @@ Viz [Gruntfile.js](blob/master/Gruntfile.js).
 ---
 
 Autor: Martin Michálek, martin@vzhurudolu.cz
-
-
-
-
-
-
-
-
-
-
-
-
