@@ -1,0 +1,27 @@
+/*
+
+--- Kontejner pro obsah stranky ---
+
+*/
+/*
+
+--- Promenne ---
+
+*/
+/*
+
+--- Mixiny ---
+
+*/
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.container:before,
+.container:after {
+  content: " ";
+  display: table;
+}
+.container:after {
+  clear: both;
+}

@@ -1,0 +1,34 @@
+/*
+
+--- Fotogalerie ---
+
+*/
+/*
+
+--- Promenne ---
+
+*/
+/*
+
+--- Mixiny ---
+
+*/
+.gallery:before,
+.gallery:after {
+  content: " ";
+  display: table;
+}
+.gallery:after {
+  clear: both;
+}
+.gallery-item {
+  float: left;
+  width: 31.48148148%;
+  margin: 0 2.77777778% 15px 0;
+}
+.gallery-item a {
+  margin-bottom: 4px;
+}
+.gallery-item.last {
+  margin-right: 0;
+}

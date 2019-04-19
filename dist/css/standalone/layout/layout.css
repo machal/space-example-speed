@@ -3,24 +3,28 @@
 --- Layout - pro siroke displeje ---
 
 */
+/*
 
-@import "../core/variables";
-@import "../core/mixins";
+--- Promenne ---
 
+*/
+/*
+
+--- Mixiny ---
+
+*/
 .container {
   max-width: 1100px;
   margin: 0 auto;
 }
-
 .content {
   float: left;
   box-sizing: border-box;
-  width: percentage(2/3);
-  padding-right: 4*@gutter;
+  width: 66.66666667%;
+  padding-right: 60px;
 }
-
 .side {
   float: right;
   box-sizing: border-box;
-  width: percentage(1/3);
+  width: 33.33333333%;
 }

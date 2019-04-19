@@ -5,22 +5,27 @@
 
 module.exports = {
 
+
   default: {
+    options: {
+      sourceMap: true,
+      sourceMapFilename: 'dist/css/bundle/style.css.map',
+      sourceMapURL: 'style.css.map',
+      sourceMapRootpath: '/',
+    },
     files: {
-      'dist/css/style.css': 'src/less/index.less'
+      'dist/css/bundle/style.css': 'src/less/index.less'
     }
   },
 
-  sourcemaps: {
-    files: {
-      'dist/css/style.css': 'src/less/index.less'
-    },
-    options: {
-      sourceMap: true,
-      sourceMapFilename: 'dist/css/style.css.map',
-      sourceMapURL: 'style.css.map',
-      sourceMapRootpath: '/',
-    }
+  components: {
+    files: [{
+      expand: true,
+      cwd: 'src/less/',
+      src: ['**/*.less'],
+      dest: 'dist/css/standalone/',
+      ext: '.css'
+    }]
   }
 
 };

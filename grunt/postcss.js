@@ -5,21 +5,33 @@
 
 module.exports = {
 
+  options: {
+    map: true,
+    processors: [
+      // pridani vendor prefixu
+      require('autoprefixer')(),
+      // media queries z px do em
+      require('postcss-em-media-query')({ }),
+      //  minifikace CSS
+      require('cssnano')()
+    ]
+  },
+
   default: {
-    options: {
-      map: true,
-      processors: [
-        // pridani vendor prefixu
-        require('autoprefixer')(),
-        // media queries z px do em
-        require('postcss-em-media-query')({ }),
-        //  minifikace CSS
-        require('cssnano')()
-      ]
-    },
     dist: {
-      src: 'dist/css/style.css'
+      src: 'dist/css/bundle/style.css'
     }
+  },
+
+  components: {
+    files: [{
+      expand: true,
+      cwd: 'dis/css/standalone/',
+      src: ['**/*.css'],
+      dest: 'dist/css/standalone/',
+      ext: '.min.css'
+    }]
   }
+
 
 };

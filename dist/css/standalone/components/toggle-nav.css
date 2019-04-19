@@ -5,19 +5,23 @@
 Pattern by Brad Frost
 http://codepen.io/bradfrost/pen/sHvaz
 */
+/*
 
-@import "../core/variables";
-@import "../core/mixins";
+--- Promenne ---
 
+*/
+/*
+
+--- Mixiny ---
+
+*/
 /* -- Odkaz na navigaci na malych screenech -- */
-
 /* Odkaz na navigaci
    <p class="nav-link"><a href="#nav">≡</a></p>
 */
 .nav-link {
   display: none;
 }
-
 @media screen and (max-width: 599px) {
   .nav-link {
     position: absolute;
@@ -27,32 +31,26 @@ http://codepen.io/bradfrost/pen/sHvaz
     background: red;
     float: right;
   }
-
   .nav-link a {
     display: inline-block;
     padding: 0 10px 5px 10px;
     font-size: 40px;
-    line-height: .6;
+    line-height: 0.6;
     color: white;
     text-decoration: none;
     font-weight: normal;
   }
 }
-
 /* -- Samotna navigace -- */
-
 @media screen and (max-width: 599px) {
-
   [role=navigation] {
     clear: both;
     transition: all 0.3s ease-out;
   }
-
   .js [role=navigation] {
     overflow: hidden;
     max-height: 0;
   }
-
   .js [role=navigation].active {
     max-height: 300px;
   }

@@ -10,6 +10,11 @@ module.exports = {
     'postcss'
   ],
 
+  css_components: [
+    'less:components',
+    'postcss:components'
+  ],
+
   content_img: [
     'imagemin:content',
     'imagemin:content_nonprogressive',

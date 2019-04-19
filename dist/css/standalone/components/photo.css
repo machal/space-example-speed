@@ -1,0 +1,19 @@
+/*
+
+--- Fotogalerie ---
+
+*/
+/*
+
+--- Promenne ---
+
+*/
+/*
+
+--- Mixiny ---
+
+*/
+.photo a,
+.photo img {
+  display: block;
+}
