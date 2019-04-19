@@ -15,7 +15,10 @@ module.exports = {
     'postcss:components'
   ],
 
-  content_img: [
+  img: [
+    'imagemin:root',
+    'imagemin:bitmap',
+    'imagemin:vector',
     'imagemin:content',
     'imagemin:content_nonprogressive',
     'imagemin:content_mozjpeg',

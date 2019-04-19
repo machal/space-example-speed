@@ -1,58 +1,65 @@
-(function(u) {
+(function(c) {
     "use strict";
-    var e = function(e, n, t) {
-        var i = u.document;
-        var r = i.createElement("link");
-        var o;
-        if (n) {
-            o = n;
+    var e = function(e, t, n, i) {
+        var r = c.document;
+        var o = r.createElement("link");
+        var a;
+        if (t) {
+            a = t;
         } else {
-            var a = (i.body || i.getElementsByTagName("head")[0]).childNodes;
-            o = a[a.length - 1];
+            var d = (r.body || r.getElementsByTagName("head")[0]).childNodes;
+            a = d[d.length - 1];
         }
-        var d = i.styleSheets;
-        r.rel = "stylesheet";
-        r.href = e;
-        r.media = "only x";
-        function l(e) {
-            if (i.body) {
+        var f = r.styleSheets;
+        if (i) {
+            for (var l in i) {
+                if (i.hasOwnProperty(l)) {
+                    o.setAttribute(l, i[l]);
+                }
+            }
+        }
+        o.rel = "stylesheet";
+        o.href = e;
+        o.media = "only x";
+        function s(e) {
+            if (r.body) {
                 return e();
             }
             setTimeout(function() {
-                l(e);
+                s(e);
             });
         }
-        l(function() {
-            o.parentNode.insertBefore(r, n ? o : o.nextSibling);
+        s(function() {
+            a.parentNode.insertBefore(o, t ? a : a.nextSibling);
         });
-        var f = function(e) {
-            var n = r.href;
-            var t = d.length;
-            while (t--) {
-                if (d[t].href === n) {
+        var u = function(e) {
+            var t = o.href;
+            var n = f.length;
+            while (n--) {
+                if (f[n].href === t) {
                     return e();
                 }
             }
             setTimeout(function() {
-                f(e);
+                u(e);
             });
         };
-        function s() {
-            if (r.addEventListener) {
-                r.removeEventListener("load", s);
+        function v() {
+            if (o.addEventListener) {
+                o.removeEventListener("load", v);
             }
-            r.media = t || "all";
+            o.media = n || "all";
         }
-        if (r.addEventListener) {
-            r.addEventListener("load", s);
+        if (o.addEventListener) {
+            o.addEventListener("load", v);
         }
-        r.onloadcssdefined = f;
-        f(s);
-        return r;
+        o.onloadcssdefined = u;
+        u(v);
+        return o;
     };
     if (typeof exports !== "undefined") {
         exports.loadCSS = e;
     } else {
-        u.loadCSS = e;
+        c.loadCSS = e;
     }
 })(typeof global !== "undefined" ? global : this);

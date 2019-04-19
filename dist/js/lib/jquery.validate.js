@@ -90,11 +90,11 @@
             return e;
         },
         rules: function(e, t) {
-            var i = this[0], s, r, n, a, o, l;
+            var i = this[0], s = typeof this.attr("contenteditable") !== "undefined" && this.attr("contenteditable") !== "false", r, n, a, o, l, u;
             if (i == null) {
                 return;
             }
-            if (!i.form && i.isContentEditable) {
+            if (!i.form && s) {
                 i.form = this.closest("form")[0];
                 i.name = this.attr("name");
             }
@@ -102,48 +102,48 @@
                 return;
             }
             if (e) {
-                s = f.data(i.form, "validator").settings;
-                r = s.rules;
-                n = f.validator.staticRules(i);
+                r = f.data(i.form, "validator").settings;
+                n = r.rules;
+                a = f.validator.staticRules(i);
                 switch (e) {
                   case "add":
-                    f.extend(n, f.validator.normalizeRule(t));
-                    delete n.messages;
-                    r[i.name] = n;
+                    f.extend(a, f.validator.normalizeRule(t));
+                    delete a.messages;
+                    n[i.name] = a;
                     if (t.messages) {
-                        s.messages[i.name] = f.extend(s.messages[i.name], t.messages);
+                        r.messages[i.name] = f.extend(r.messages[i.name], t.messages);
                     }
                     break;
 
                   case "remove":
                     if (!t) {
-                        delete r[i.name];
-                        return n;
+                        delete n[i.name];
+                        return a;
                     }
-                    l = {};
+                    u = {};
                     f.each(t.split(/\s/), function(e, t) {
-                        l[t] = n[t];
-                        delete n[t];
+                        u[t] = a[t];
+                        delete a[t];
                     });
-                    return l;
+                    return u;
                 }
             }
-            a = f.validator.normalizeRules(f.extend({}, f.validator.classRules(i), f.validator.attributeRules(i), f.validator.dataRules(i), f.validator.staticRules(i)), i);
-            if (a.required) {
-                o = a.required;
-                delete a.required;
-                a = f.extend({
-                    required: o
-                }, a);
+            o = f.validator.normalizeRules(f.extend({}, f.validator.classRules(i), f.validator.attributeRules(i), f.validator.dataRules(i), f.validator.staticRules(i)), i);
+            if (o.required) {
+                l = o.required;
+                delete o.required;
+                o = f.extend({
+                    required: l
+                }, o);
             }
-            if (a.remote) {
-                o = a.remote;
-                delete a.remote;
-                a = f.extend(a, {
-                    remote: o
+            if (o.remote) {
+                l = o.remote;
+                delete o.remote;
+                o = f.extend(o, {
+                    remote: l
                 });
             }
-            return a;
+            return o;
         }
     });
     f.extend(f.expr.pseudos || f.expr[":"], {
@@ -280,7 +280,7 @@
                 this.pending = {};
                 this.invalid = {};
                 this.reset();
-                var r = this.currentForm, s = this.groups = {}, i;
+                var n = this.currentForm, s = this.groups = {}, i;
                 f.each(this.settings.groups, function(i, e) {
                     if (typeof e === "string") {
                         e = e.split(/\s/);
@@ -294,16 +294,17 @@
                     i[e] = f.validator.normalizeRule(t);
                 });
                 function e(e) {
-                    if (!this.form && this.isContentEditable) {
+                    var t = typeof f(this).attr("contenteditable") !== "undefined" && f(this).attr("contenteditable") !== "false";
+                    if (!this.form && t) {
                         this.form = f(this).closest("form")[0];
                         this.name = f(this).attr("name");
                     }
-                    if (r !== this.form) {
+                    if (n !== this.form) {
                         return;
                     }
-                    var t = f.data(this.form, "validator"), i = "on" + e.type.replace(/^validate/, ""), s = t.settings;
-                    if (s[i] && !f(this).is(s.ignore)) {
-                        s[i].call(t, this, e);
+                    var i = f.data(this.form, "validator"), s = "on" + e.type.replace(/^validate/, ""), r = i.settings;
+                    if (r[s] && !f(this).is(r.ignore)) {
+                        r[s].call(i, this, e);
                     }
                 }
                 f(this.currentForm).on("focusin.validate focusout.validate keyup.validate", ":text, [type='password'], [type='file'], select, textarea, [type='number'], [type='search'], " + "[type='tel'], [type='url'], [type='email'], [type='datetime'], [type='date'], [type='month'], " + "[type='week'], [type='time'], [type='datetime-local'], [type='range'], [type='color'], " + "[type='radio'], [type='checkbox'], [contenteditable], [type='button']", e).on("click.validate", "select, option, [type='radio'], [type='checkbox']", e);
@@ -443,23 +444,24 @@
                 }).length === 1 && t;
             },
             elements: function() {
-                var t = this, i = {};
+                var i = this, s = {};
                 return f(this.currentForm).find("input, select, textarea, [contenteditable]").not(":submit, :reset, :image, :disabled").not(this.settings.ignore).filter(function() {
                     var e = this.name || f(this).attr("name");
-                    if (!e && t.settings.debug && window.console) {
+                    var t = typeof f(this).attr("contenteditable") !== "undefined" && f(this).attr("contenteditable") !== "false";
+                    if (!e && i.settings.debug && window.console) {
                         console.error("%o has no name assigned", this);
                     }
-                    if (this.isContentEditable) {
+                    if (t) {
                         this.form = f(this).closest("form")[0];
                         this.name = e;
                     }
-                    if (this.form !== t.currentForm) {
+                    if (this.form !== i.currentForm) {
                         return false;
                     }
-                    if (e in i || !t.objectLength(f(this).rules())) {
+                    if (e in s || !i.objectLength(f(this).rules())) {
                         return false;
                     }
-                    i[e] = true;
+                    s[e] = true;
                     return true;
                 });
             },
@@ -490,35 +492,35 @@
                 this.toHide = this.errorsFor(e);
             },
             elementValue: function(e) {
-                var t = f(e), i = e.type, s, r;
+                var t = f(e), i = e.type, s = typeof t.attr("contenteditable") !== "undefined" && t.attr("contenteditable") !== "false", r, n;
                 if (i === "radio" || i === "checkbox") {
                     return this.findByName(e.name).filter(":checked").val();
                 } else if (i === "number" && typeof e.validity !== "undefined") {
                     return e.validity.badInput ? "NaN" : t.val();
                 }
-                if (e.isContentEditable) {
-                    s = t.text();
+                if (s) {
+                    r = t.text();
                 } else {
-                    s = t.val();
+                    r = t.val();
                 }
                 if (i === "file") {
-                    if (s.substr(0, 12) === "C:\\fakepath\\") {
-                        return s.substr(12);
+                    if (r.substr(0, 12) === "C:\\fakepath\\") {
+                        return r.substr(12);
                     }
-                    r = s.lastIndexOf("/");
-                    if (r >= 0) {
-                        return s.substr(r + 1);
+                    n = r.lastIndexOf("/");
+                    if (n >= 0) {
+                        return r.substr(n + 1);
                     }
-                    r = s.lastIndexOf("\\");
-                    if (r >= 0) {
-                        return s.substr(r + 1);
+                    n = r.lastIndexOf("\\");
+                    if (n >= 0) {
+                        return r.substr(n + 1);
                     }
-                    return s;
+                    return r;
                 }
-                if (typeof s === "string") {
-                    return s.replace(/\r/g, "");
+                if (typeof r === "string") {
+                    return r.replace(/\r/g, "");
                 }
-                return s;
+                return r;
             },
             check: function(t) {
                 t = this.validationTargetFor(this.clean(t));

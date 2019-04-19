@@ -18,6 +18,12 @@
     o.bindMediaToggle = function(e) {
         var t = e.media || "all";
         function a() {
+            if (e.addEventListener) {
+                e.removeEventListener("load", a);
+            } else if (e.attachEvent) {
+                e.detachEvent("onload", a);
+            }
+            e.setAttribute("onload", null);
             e.media = t;
         }
         if (e.addEventListener) {

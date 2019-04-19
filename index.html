@@ -33,6 +33,16 @@
             <a href="index.html"><img src="dist/img/vector/space-news-logo-inverted.svg" width="216" height="129" alt="Space News" /></a>
           </p>
 
+          <script>
+            $(document).ready(function(){
+              // Ovladani navigace na mobilech
+              $('.head-hamburger a').click(function(event) {
+                event.preventDefault();
+                $('#nav').toggle();
+              });
+            });
+          </script>
+
           <p class="head-hamburger">
             <a href="#nav">
               <img src="dist/img/vector/hamburger-menu.svg" height="24" alt="Menu" />
