@@ -25,13 +25,13 @@ module.exports = {
   dist: [
     'copy',
     'css',
-    'js',
-    'criticalcss',
+    'js'
   ],
 
   default: [
     'copy',
-    'browserSync'
+    'browserSync',
+    'watch'
   ]
 
 };

@@ -72,13 +72,6 @@ module.exports = {
         'src/js/lib/loadjs.js':
           'node_modules/fg-loadjs/loadJS.js'
       }
-    },
-
-    fontfaceobserver: {
-      files: {
-        'src/js/lib/fontfaceobserver.js':
-          'node_modules/fontfaceobserver/fontfaceobserver.standalone.js'
-      }
     }
 
 };

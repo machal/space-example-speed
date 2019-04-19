@@ -1,5 +1,5 @@
-// SVG2PNG
-// =======
+// Responsive images
+// =================
 
 'use strict';
 

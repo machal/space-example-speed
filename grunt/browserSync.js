@@ -14,8 +14,7 @@ module.exports = {
       src: ["dist/css/*.css"]
     },
     options: {
-      // S timto nefunguje TODO
-      // watchTask: true,
+      watchTask: true,
       server: "./",
       plugins: [
         {
