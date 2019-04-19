@@ -72,6 +72,13 @@ module.exports = {
         'src/js/lib/loadjs.js':
           'node_modules/fg-loadjs/loadJS.js'
       }
+    },
+
+    vanilla_lazyload: {
+      files: {
+        'src/js/lib/lazyload.js':
+          'node_modules/vanilla-lazyload/dist/lazyload.js'
+      }
     }
 
 };
