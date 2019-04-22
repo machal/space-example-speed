@@ -399,6 +399,8 @@ http://codepen.io/bradfrost/pen/sHvaz
 .container {
   padding-left: 15px;
   padding-right: 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .container:before,
 .container:after {
