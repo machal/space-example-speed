@@ -13,12 +13,6 @@
 
     <link rel="stylesheet" href="dist/css/bundle/style.css">
 
-    <script src="dist/js/lib/jquery.js"></script>
-    <script src="dist/js/lib/jquery.fancybox.js"></script>
-    <script src="dist/js/lib/jquery.mousewheel.js"></script>
-    <script src="dist/js/lib/jquery.validate.js"></script>
-    <script src="dist/js/index.js"></script>
-
   </head>
 
   <body>
@@ -32,16 +26,6 @@
           <p class="head-logo">
             <a href="index.html"><img src="dist/img/vector/space-news-logo-inverted.svg" width="216" height="129" alt="Space News" /></a>
           </p>
-
-          <script>
-            $(document).ready(function(){
-              // Ovladani navigace na mobilech
-              $('.head-hamburger a').click(function(event) {
-                event.preventDefault();
-                $('#nav').toggle();
-              });
-            });
-          </script>
 
           <p class="head-hamburger">
             <a href="#nav">
@@ -308,6 +292,12 @@
       </div><!-- /.container -->
 
     </div><!-- .foot -->
+
+    <script src="dist/js/lib/jquery.min.js"></script>
+    <script src="dist/js/lib/jquery.fancybox.min.js"></script>
+    <script src="dist/js/lib/jquery.mousewheel.min.js"></script>
+    <!-- <script src="dist/js/lib/jquery.validate.js"></script> -->
+    <script src="dist/js/index.min.js"></script>
 
   </body>
 
