@@ -9,4 +9,9 @@ $(document).ready(function(){
       $('#nav').toggle();
     });
 
+    // Lazy loading
+    var lazyLoadInstance = new LazyLoad({
+      elements_selector: ".lazy"
+    });
+
 })

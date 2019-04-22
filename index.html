@@ -120,17 +120,17 @@
 
           <p class="gallery-item">
             <a class="fancybox" href="dist/img/responsive-images/orion_2-xl.jpg">
-              <img src="dist/img/responsive-images/orion_2-md.jpg" alt="Orion" height="100">
+              <img data-src="dist/img/responsive-images/orion_2-md.jpg" alt="Orion" height="100" class="lazy">
             </a>
           </p>
           <p class="gallery-item">
             <a class="fancybox" href="dist/img/responsive-images/orion_3-xl.jpg">
-              <img src="dist/img/responsive-images/orion_3-md.jpg" alt="Orion" height="100">
+              <img data-src="dist/img/responsive-images/orion_3-md.jpg" alt="Orion" height="100" class="lazy">
             </a>
           </p>
           <p class="gallery-item last">
             <a class="fancybox" href="dist/img/responsive-images/orion_4-xl.jpg">
-              <img src="dist/img/responsive-images/orion_4-md.jpg" alt="Orion" height="100">
+              <img data-src="dist/img/responsive-images/orion_4-md.jpg" alt="Orion" height="100" class="lazy">
             </a>
           </p>
         </div>
@@ -175,8 +175,9 @@
             </h3>
             <p class="similar-article-image">
               <a href="#">
-                <img src="dist/img/responsive-images/similar_1-sm.jpg" height="32"
-                  alt="Orion pošle raketoplány do šrotu a otevře novou etapu v dobývání vesmíru">
+                <img data-src="dist/img/responsive-images/similar_1-sm.jpg" height="32"
+                  alt="Orion pošle raketoplány do šrotu a otevře novou etapu v dobývání vesmíru"
+                  class="lazy">
               </a>
             </p>
             <p>
@@ -191,7 +192,8 @@
             </h3>
             <p class="similar-article-image">
               <a href="#">
-                <img src="dist/img/responsive-images/similar_2-sm.jpg" height="32" alt="Na Měsíc a Mars poletí lidé v Orionu">
+                <img data-src="dist/img/responsive-images/similar_2-sm.jpg" height="32" alt="Na Měsíc a Mars poletí lidé v Orionu"
+                  class="lazy">
               </a>
             </p>
             <p>
@@ -206,7 +208,8 @@
             </h3>
             <p class="similar-article-image">
               <a href="#">
-                <img src="dist/img/responsive-images/similar_3-sm.jpg" height="32" alt="Evropa se bude podílet na vývoji nové kosmické lodě NASA. Bez Čechů">
+                <img data-src="dist/img/responsive-images/similar_3-sm.jpg" height="32" alt="Evropa se bude podílet na vývoji nové kosmické lodě NASA. Bez Čechů"
+                  class="lazy">
               </a>
             </p>
             <p>
@@ -274,7 +277,7 @@
         <h2>Video</h2>
 
         <p class="media">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/ib4djfbik40" frameborder="0" allowfullscreen></iframe>
+          <iframe width="560" height="315" data-src="https://www.youtube.com/embed/ib4djfbik40" frameborder="0" allowfullscreen  class="lazy"></iframe>
         </p>
 
       </div><!-- .side -->
@@ -294,10 +297,10 @@
             Sledujte nás
           </h2>
           <p>
-            <a class="foot-socials-icon" href="http://www.facebook.com/VzhuruDolu"><img src="dist/img/vector/facebook.svg" alt="Facebook" width="36" height="36"></a>
-            <a class="foot-socials-icon" href="http://www.twitter.com/VzhuruDolu"><img src="dist/img/vector/twitter.svg" alt="Twitter" width="36" height="36"></a>
-            <a class="foot-socials-icon" href="http://plus.google.com/VzhuruDolu"><img src="dist/img/vector/google_plus.svg" alt="Google Plus" width="36" height="36"></a>
-            <a class="foot-socials-icon" href="http://www.vzhurudolu.cz/rss"><img src="dist/img/vector/feed.svg" alt="RSS" width="36" height="36"></a>
+            <a class="foot-socials-icon" href="http://www.facebook.com/VzhuruDolu"><img data-src="dist/img/vector/facebook.svg" alt="Facebook" width="36" height="36" class="lazy"></a>
+            <a class="foot-socials-icon" href="http://www.twitter.com/VzhuruDolu"><img data-src="dist/img/vector/twitter.svg" alt="Twitter" width="36" height="36" class="lazy"></a>
+            <a class="foot-socials-icon" href="http://plus.google.com/VzhuruDolu"><img data-src="dist/img/vector/google_plus.svg" alt="Google Plus" width="36" height="36" class="lazy"></a>
+            <a class="foot-socials-icon" href="http://www.vzhurudolu.cz/rss"><img data-src="dist/img/vector/feed.svg" alt="RSS" width="36" height="36" class="lazy"></a>
           </p>
         </div>
 
@@ -312,6 +315,7 @@
     <script src="dist/js/lib/jquery.min.js"></script>
     <script src="dist/js/lib/jquery.fancybox.min.js"></script>
     <script src="dist/js/lib/jquery.mousewheel.min.js"></script>
+    <script src="dist/js/lib/lazyload.min.js"></script>
     <!-- <script src="dist/js/lib/jquery.validate.js"></script> -->
     <script src="dist/js/index.min.js"></script>
 
