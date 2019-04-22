@@ -10,7 +10,7 @@ module.exports = {
 
   less: {
     files: 'src/less/**/*.less',
-    tasks: ['css']
+    tasks: ['css','css_components']
   },
 
   js: {

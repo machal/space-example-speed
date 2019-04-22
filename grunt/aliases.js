@@ -33,6 +33,7 @@ module.exports = {
   dist: [
     'copy',
     'css',
+    'css_components',
     'js'
   ],
 

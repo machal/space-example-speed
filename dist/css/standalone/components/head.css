@@ -14,7 +14,7 @@
 
 */
 .head {
-  background: #2f2222 url('../../img/bitmap/head_aurora_small.jpg') no-repeat center center;
+  background: url('/dist/img/bitmap/head_aurora_small.jpg') no-repeat center center;
   background-size: cover;
   padding: 24px 15px;
 }
@@ -28,16 +28,16 @@
 }
 @media only screen and (min-width: 1000px), only screen and (min-width: 500px) and (-webkit-min-device-pixel-ratio: 2), only screen and (min-width: 500px) and (min-resolution: 192dpi) {
   .head {
-    background-image: url('../../img/bitmap/head_aurora_medium.jpg');
+    background-image: url('/dist/img/bitmap/head_aurora_medium.jpg');
   }
 }
 @media only screen and (min-width: 2000px), only screen and (min-width: 1000px) and (-webkit-min-device-pixel-ratio: 2), only screen and (min-width: 1000px) and (min-resolution: 192dpi) {
   .head {
-    background-image: url('../../img/bitmap/head_aurora_large.jpg');
+    background-image: url('/dist/img/bitmap/head_aurora_large.jpg');
   }
 }
 .old-ie .head {
-  background-image: url('../../img/bitmap/head_aurora_large.jpg');
+  background-image: url('/dist/img/bitmap/head_aurora_large.jpg');
 }
 .head-logo {
   margin-bottom: 0;
