@@ -1,4 +1,4 @@
-# Příklad ke školení [„Optimalizace rychlosti načítání“](https://www.vzhurudolu.cz/kurzy/rychlost-nacitani)
+# Příklad ke školení „[Optimalizace rychlosti webu](https://www.vzhurudolu.cz/kurzy/rychlost-nacitani)“
 
 ## Instalace projektu
 
