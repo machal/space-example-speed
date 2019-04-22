@@ -19,6 +19,7 @@
   src: url('../../fonts/exo/exo-bold-webfont.eot?#iefix') format('embedded-opentype'), url('../../fonts/exo/exo-bold-webfont.woff2') format('woff2'), url('../../fonts/exo/exo-bold-webfont.woff') format('woff'), url('../../fonts/exo/exo-bold-webfont.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: fallback;
 }
 @font-face {
   font-family: 'Vollkorn';
@@ -26,6 +27,7 @@
   src: url('../../fonts/vollkorn/vollkorn-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../../fonts/vollkorn/vollkorn-regular-webfont.woff2') format('woff2'), url('../../fonts/vollkorn/vollkorn-regular-webfont.woff') format('woff'), url('../../fonts/vollkorn/vollkorn-regular-webfont.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: fallback;
 }
 @font-face {
   font-family: 'Vollkorn';
@@ -33,6 +35,7 @@
   src: url('../../fonts/vollkorn/vollkorn-semibold-webfont.eot?#iefix') format('embedded-opentype'), url('../../fonts/vollkorn/vollkorn-semibold-webfont.woff2') format('woff2'), url('../../fonts/vollkorn/vollkorn-semibold-webfont.woff') format('woff'), url('../../fonts/vollkorn/vollkorn-semibold-webfont.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
+  font-display: fallback;
 }
 @font-face {
   font-family: 'Vollkorn';
@@ -40,6 +43,7 @@
   src: url('../../fonts/vollkorn/vollkorn-italic-webfont.eot?#iefix') format('embedded-opentype'), url('../../fonts/vollkorn/vollkorn-italic-webfont.woff2') format('woff2'), url('../../fonts/vollkorn/vollkorn-italic-webfont.woff') format('woff'), url('../../fonts/vollkorn/vollkorn-italic-webfont.ttf') format('truetype');
   font-weight: normal;
   font-style: italic;
+  font-display: fallback;
 }
 @font-face {
   font-family: 'Vollkorn';
@@ -47,4 +51,5 @@
   src: url('../../fonts/vollkorn/vollkorn-semibolditalic-webfont.eot?#iefix') format('embedded-opentype'), url('../../fonts/vollkorn/vollkorn-semibolditalic-webfont.woff2') format('woff2'), url('../../fonts/vollkorn/vollkorn-semibolditalic-webfont.woff') format('woff'), url('../../fonts/vollkorn/vollkorn-semibolditalic-webfont.ttf') format('truetype');
   font-weight: bold;
   font-style: italic;
+  font-display: fallback;
 }
