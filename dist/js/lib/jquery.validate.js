@@ -433,7 +433,7 @@
             focusInvalid: function() {
                 if (this.settings.focusInvalid) {
                     try {
-                        f(this.findLastActive() || this.errorList.length && this.errorList[0].element || []).filter(":visible").focus().trigger("focusin");
+                        f(this.findLastActive() || this.errorList.length && this.errorList[0].element || []).filter(":visible").trigger("focus").trigger("focusin");
                     } catch (e) {}
                 }
             },

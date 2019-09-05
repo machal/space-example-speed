@@ -79,7 +79,18 @@ module.exports = {
         'src/js/lib/lazyload.js':
           'node_modules/vanilla-lazyload/dist/lazyload.js'
       }
-    }
+    },
+
+    slick_carousel: {
+      files: [
+        {
+          expand: true,
+          cwd: 'node_modules/slick-carousel/slick/',
+          src: ['**/*.*'],
+          dest: 'dist/lib/slick/'
+        },
+      ]
+    },
 
 };
 

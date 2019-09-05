@@ -57,7 +57,7 @@
         }
         return typeof e === "object" || typeof e === "function" ? n[o.call(e)] || "object" : typeof e;
     }
-    var c = "3.4.0", E = function(e, t) {
+    var c = "3.4.1", E = function(e, t) {
         return new E.fn.init(e, t);
     }, d = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
     E.fn = E.prototype = {
@@ -2348,7 +2348,7 @@
     }, ue = {
         composed: true
     };
-    if (se.attachShadow) {
+    if (se.getRootNode) {
         le = function(e) {
             return E.contains(e.ownerDocument, e) || e.getRootNode(ue) === e.ownerDocument;
         };
@@ -2838,14 +2838,14 @@
             click: {
                 setup: function(e) {
                     var t = this || e;
-                    if (me.test(t.type) && t.click && j(t, "input") && G.get(t, "click") === undefined) {
+                    if (me.test(t.type) && t.click && j(t, "input")) {
                         qe(t, "click", Ae);
                     }
                     return false;
                 },
                 trigger: function(e) {
                     var t = this || e;
-                    if (me.test(t.type) && t.click && j(t, "input") && G.get(t, "click") === undefined) {
+                    if (me.test(t.type) && t.click && j(t, "input")) {
                         qe(t, "click");
                     }
                     return true;
@@ -2866,7 +2866,9 @@
     };
     function qe(e, r, o) {
         if (!o) {
-            E.event.add(e, r, Ae);
+            if (G.get(e, r) === undefined) {
+                E.event.add(e, r, Ae);
+            }
             return;
         }
         G.set(e, r, false);
@@ -2875,7 +2877,7 @@
             handler: function(e) {
                 var t, n, i = G.get(this, r);
                 if (e.isTrigger & 1 && this[r]) {
-                    if (!i) {
+                    if (!i.length) {
                         i = s.call(arguments);
                         G.set(this, r, i);
                         t = o(this, r);
@@ -2884,18 +2886,20 @@
                         if (i !== n || t) {
                             G.set(this, r, false);
                         } else {
-                            n = undefined;
+                            n = {};
                         }
                         if (i !== n) {
                             e.stopImmediatePropagation();
                             e.preventDefault();
-                            return n;
+                            return n.value;
                         }
                     } else if ((E.event.special[r] || {}).delegateType) {
                         e.stopPropagation();
                     }
-                } else if (i) {
-                    G.set(this, r, E.event.trigger(E.extend(i.shift(), E.Event.prototype), i, this));
+                } else if (i.length) {
+                    G.set(this, r, {
+                        value: E.event.trigger(E.extend(i[0], E.Event.prototype), i.slice(1), this)
+                    });
                     e.stopImmediatePropagation();
                 }
             }
@@ -7790,7 +7794,7 @@
             focusInvalid: function() {
                 if (this.settings.focusInvalid) {
                     try {
-                        d(this.findLastActive() || this.errorList.length && this.errorList[0].element || []).filter(":visible").focus().trigger("focusin");
+                        d(this.findLastActive() || this.errorList.length && this.errorList[0].element || []).filter(":visible").trigger("focus").trigger("focusin");
                     } catch (e) {}
                 }
             },
@@ -8503,4 +8507,5 @@
 
 $(document).ready(function() {
     $(".fancybox").fancybox();
+    $(".slick-carousel").slick();
 });

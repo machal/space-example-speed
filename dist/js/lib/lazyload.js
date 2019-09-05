@@ -59,44 +59,7 @@ function _typeof(t) {
     var i = function t(e) {
         return _extends({}, o, e);
     };
-    var s = "data-";
-    var c = "was-processed";
-    var u = "ll-timeout";
-    var l = "true";
-    var f = function t(e, n) {
-        return e.getAttribute(s + n);
-    };
-    var v = function t(e, n, r) {
-        var a = s + n;
-        if (r === null) {
-            e.removeAttribute(a);
-            return;
-        }
-        e.setAttribute(a, r);
-    };
-    var d = function t(e) {
-        return v(e, c, l);
-    };
-    var _ = function t(e) {
-        return f(e, c) === l;
-    };
-    var g = function t(e, n) {
-        return v(e, u, n);
-    };
-    var m = function t(e) {
-        return f(e, u);
-    };
-    var b = function t(e) {
-        return e.filter(function(t) {
-            return !_(t);
-        });
-    };
-    var h = function t(e, n) {
-        return e.filter(function(t) {
-            return t !== n;
-        });
-    };
-    var p = function t(e, n) {
+    var s = function t(e, n) {
         var r;
         var a = "LazyLoad::Initialized";
         var o = new e(n);
@@ -119,13 +82,50 @@ function _typeof(t) {
             return;
         }
         if (!e.length) {
-            p(t, e);
+            s(t, e);
         } else {
             for (var n = 0, r; r = e[n]; n += 1) {
-                p(t, r);
+                s(t, r);
             }
         }
     }
+    var c = "data-";
+    var u = "was-processed";
+    var l = "ll-timeout";
+    var f = "true";
+    var v = function t(e, n) {
+        return e.getAttribute(c + n);
+    };
+    var d = function t(e, n, r) {
+        var a = c + n;
+        if (r === null) {
+            e.removeAttribute(a);
+            return;
+        }
+        e.setAttribute(a, r);
+    };
+    var _ = function t(e) {
+        return d(e, u, f);
+    };
+    var g = function t(e) {
+        return v(e, u) === f;
+    };
+    var m = function t(e, n) {
+        return d(e, l, n);
+    };
+    var b = function t(e) {
+        return v(e, l);
+    };
+    var h = function t(e) {
+        return e.filter(function(t) {
+            return !g(t);
+        });
+    };
+    var p = function t(e, n) {
+        return e.filter(function(t) {
+            return t !== n;
+        });
+    };
     var y = function t(e, n) {
         if (e) {
             e(n);
@@ -153,9 +153,9 @@ function _typeof(t) {
         e.setAttribute(n, r);
     };
     var k = function t(e, n) {
-        I(e, "sizes", f(e, n.data_sizes));
-        I(e, "srcset", f(e, n.data_srcset));
-        I(e, "src", f(e, n.data_src));
+        I(e, "sizes", v(e, n.data_sizes));
+        I(e, "srcset", v(e, n.data_srcset));
+        I(e, "src", v(e, n.data_src));
     };
     var x = function t(e, n) {
         var r = e.parentNode;
@@ -168,19 +168,19 @@ function _typeof(t) {
         k(e, n);
     };
     var A = function t(e, n) {
-        I(e, "src", f(e, n.data_src));
+        I(e, "src", v(e, n.data_src));
     };
     var L = function t(e, n) {
         var r = w(e);
         r.forEach(function(t) {
-            I(t, "src", f(t, n.data_src));
+            I(t, "src", v(t, n.data_src));
         });
-        I(e, "src", f(e, n.data_src));
+        I(e, "src", v(e, n.data_src));
         e.load();
     };
     var O = function t(e, n) {
-        var r = f(e, n.data_src);
-        var a = f(e, n.data_bg);
+        var r = v(e, n.data_src);
+        var a = v(e, n.data_bg);
         if (r) {
             e.style.backgroundImage = 'url("'.concat(r, '")');
         }
@@ -200,7 +200,7 @@ function _typeof(t) {
         if (o) {
             o(e, r);
             E(n, 1);
-            n._elements = h(n._elements, e);
+            n._elements = p(n._elements, e);
             return;
         }
         O(e, r);
@@ -285,16 +285,16 @@ function _typeof(t) {
         B(e);
     };
     var B = function t(e) {
-        var n = m(e);
+        var n = b(e);
         if (!n) {
             return;
         }
         clearTimeout(n);
-        g(e, null);
+        m(e, null);
     };
     var J = function t(e, n) {
         var r = n._settings.load_delay;
-        var a = m(e);
+        var a = b(e);
         if (a) {
             return;
         }
@@ -302,11 +302,11 @@ function _typeof(t) {
             q(e, n);
             B(e);
         }, r);
-        g(e, a);
+        m(e, a);
     };
     var K = function t(e, n, r) {
         var a = n._settings;
-        if (!r && _(e)) {
+        if (!r && g(e)) {
             return;
         }
         if (V.indexOf(e.tagName) > -1) {
@@ -314,7 +314,7 @@ function _typeof(t) {
             C(e, a.class_loading);
         }
         z(e, n);
-        d(e);
+        _(e);
         y(a.callback_reveal, e);
         y(a.callback_set, e);
     };
@@ -358,7 +358,7 @@ function _typeof(t) {
         return e.container.querySelectorAll(e.elements_selector);
     };
     var rt = function t(e, n) {
-        return b(et(e || nt(n)));
+        return h(et(e || nt(n)));
     };
     var at = function t(e, n) {
         this._settings = i(e);
